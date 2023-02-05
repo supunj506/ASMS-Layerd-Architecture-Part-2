@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="addJobPane" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.asms.controller.job.AddJobFormController">
+   <children>
+      <Pane layoutX="200.0" prefHeight="57.0" prefWidth="1240.0" style="-fx-background-color: FEFBF6;" />
+      <Pane prefHeight="899.0" prefWidth="200.0" style="-fx-background-color: #130f40;">
+         <children>
+            <JFXButton layoutX="32.0" layoutY="117.0" prefHeight="54.0" prefWidth="137.0" style="-fx-background-color: green;" text="Add Job" textFill="#fff4f4">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="32.0" layoutY="207.0" onAction="#callJobOnAction" prefHeight="54.0" prefWidth="137.0" style="-fx-background-color: green;" text="Call Job" textFill="#fff4f4">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="32.0" layoutY="297.0" onAction="#finishJobOnAction" prefHeight="54.0" prefWidth="137.0" style="-fx-background-color: green;" text="Finish Job" textFill="#fff4f4">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </JFXButton>
+         </children></Pane>
+      <Button layoutX="1369.0" layoutY="14.0" mnemonicParsing="false" onAction="#backManagerFormOnAction" style="-fx-background-color: red; -fx-background-radius: 30;" text="BACK" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <JFXTextField fx:id="txtTableCount" alignment="CENTER" layoutX="408.0" layoutY="421.0" onKeyReleased="#keyReleasedOnAction" prefHeight="46.0" prefWidth="390.0" promptText="Table Count">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtLocation" alignment="CENTER" layoutX="408.0" layoutY="501.0" onKeyReleased="#keyReleasedOnAction" prefHeight="46.0" prefWidth="390.0" promptText="Location">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton fx:id="btnAddJob" layoutX="832.0" layoutY="756.0" onAction="#addJobOnAction" prefHeight="54.0" prefWidth="220.0" style="-fx-background-color: green;" text="Add Job" textFill="#fff6f6">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </JFXButton>
+      <JFXRadioButton fx:id="radioNew" layoutX="464.0" layoutY="193.0" text="New">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="jobType" />
+         </toggleGroup>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="radioRe" layoutX="674.0" layoutY="193.0" text="Re" toggleGroup="$jobType">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXRadioButton>
+      <JFXDatePicker fx:id="datePickDudeDate" defaultColor="#4fa83d" layoutX="410.0" layoutY="345.0" prefHeight="44.0" prefWidth="390.0" promptText="Dude Date" style="-fx-font-size: 20;" />
+      <Label layoutX="230.0" layoutY="1.0" prefHeight="57.0" prefWidth="296.0" text="Add Job Form">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="cmbCustomerName" layoutX="409.0" layoutY="263.0" prefHeight="33.0" prefWidth="390.0" promptText="Customer Name" style="-fx-font-size: 20;" />
+   </children>
+</AnchorPane>

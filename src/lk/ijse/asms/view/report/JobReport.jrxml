@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bb28c4eb-508e-4f7e-9336-302794801c22">
+	<parameter name="cusId" class="java.lang.String"/>
+	<parameter name="cusName" class="java.lang.String"/>
+	<parameter name="cusAddress" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="111" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="290" y="20" width="235" height="47" forecolor="#162E16" backcolor="#78B8F5" uuid="654489d8-5f6b-4c3b-8688-acdbe6a68e01"/>
+			</frame>
+			<staticText>
+				<reportElement x="290" y="20" width="235" height="47" uuid="2898d2c2-9b05-4d5f-9491-9aeeb7fb0d1d"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Job Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="20" width="180" height="20" uuid="c266210d-5832-4feb-abd3-d0377f1ab73b"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Axiom Systems (Pvt) Ltd]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="40" width="180" height="19" uuid="7b8921f9-4b33-476f-9ef3-4a24cc07ff10"/>
+				<textElement>
+					<font size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[No:558,Laktharu Mawatha,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="59" width="180" height="21" uuid="3c93598f-044b-46b2-97ca-13218ab7d87e"/>
+				<textElement>
+					<font size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Thalangama Nort,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="80" width="180" height="20" uuid="920eac80-1988-41af-8f98-265b844143ea"/>
+				<textElement>
+					<font size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Baththaramulla]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="10" width="545" height="1" uuid="301c40e5-5988-4e1d-ba14-6c46a30fa6f0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="340" y="72" width="120" height="28" uuid="b26a50c1-281e-4884-8177-e6601a007ae2"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.lk.ijse.asms.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="460" y="72" width="70" height="28" uuid="a7b419b1-633e-4aea-bdf7-deb35fb222f8"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.lk.ijse.asms.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="110" width="545" height="1" uuid="9bcf8d50-2b36-4d79-b482-8fc759780a45">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="150" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="20" y="10" width="169" height="30" forecolor="#162E16" backcolor="#78B8F5" uuid="bace05e7-a45a-4513-bd9a-f81fefdbba64"/>
+			</frame>
+			<staticText>
+				<reportElement x="20" y="10" width="169" height="30" uuid="501b6dfd-b8e6-459e-952f-9b8014608606"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer Details]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="50" width="80" height="20" uuid="3b1189ba-84af-4efc-82d8-80ab029dd998"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Customer Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="80" width="80" height="20" uuid="85b30f20-32ef-4fbc-b1af-867c62b7f09d"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="110" width="80" height="20" uuid="92eedb38-1ec1-40d8-8140-85f9a3fe9bd3"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="50" width="20" height="20" uuid="c35105b2-82ea-4250-8338-79e2fb3d768e"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="80" width="20" height="20" uuid="92135fd9-0ffd-43c7-9d3a-537567cbe159"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="110" width="20" height="20" uuid="d0f7a92f-3df4-44a3-8220-1fb357f09010"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="23" y="52" width="17" height="16" uuid="19e480de-277b-40f6-b45a-a48b9d2a32b4"/>
+				<imageExpression><![CDATA["E:/ASMS 50/ASMS 5.0/src/lk/ijse/asms/view/assets/icons/icons8-sphere-80.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="23" y="82" width="17" height="16" uuid="c79f1a73-ab1c-4fd5-b4d2-fd4ab81e2a50"/>
+				<imageExpression><![CDATA["E:/ASMS 50/ASMS 5.0/src/lk/ijse/asms/view/assets/icons/icons8-sphere-80.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="23" y="112" width="17" height="16" uuid="d74197a3-3ceb-4718-a2d1-07b48d79dcbe"/>
+				<imageExpression><![CDATA["E:/ASMS 50/ASMS 5.0/src/lk/ijse/asms/view/assets/icons/icons8-sphere-80.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="160" y="50" width="100" height="20" uuid="9e1580f8-ac52-4155-b1bc-e1e310cd641c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cusId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="80" width="100" height="20" uuid="4338d273-a0e4-4ee8-a714-b3aceedf6cef"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cusName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="110" width="100" height="20" uuid="e7a52853-6112-44ee-a398-31f71fa19c7d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cusAddress}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="429" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="10" width="544" height="40" forecolor="#162E16" backcolor="#78B8F5" uuid="c91965a6-261e-4eef-b120-ff3d13309414"/>
+				<staticText>
+					<reportElement x="0" y="0" width="544" height="40" uuid="04f98d7f-fa2b-4516-a801-7ec037a4da55"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Job Details]]></text>
+				</staticText>
+				<line>
+					<reportElement x="-1" y="39" width="545" height="1" uuid="fbac1f5c-20a6-4db0-8d53-079004592ba7">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+				</line>
+				<line>
+					<reportElement x="-2" y="0" width="545" height="1" uuid="15ac4436-bd16-480c-98bf-dc60e8e0588e">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+				</line>
+			</frame>
+			<staticText>
+				<reportElement x="30" y="60" width="100" height="20" uuid="841133cf-acdd-4095-be46-e88935259b68"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="100" width="100" height="20" uuid="d3a74543-a84c-478b-928c-bf141d1a3ae0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Type]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="90" width="545" height="1" uuid="b5976392-27ae-4ee5-aaea-bc85a2e3f8f8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="0" y="130" width="545" height="1" uuid="b90cfa7b-74fe-4888-a505-d8634e65280b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="0" y="170" width="545" height="1" uuid="04a24ebd-80e9-41db-9deb-f9d9e021cd6b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="30" y="140" width="100" height="20" uuid="2b6fc2b4-b5f2-49cf-8864-557b041694d7"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Location]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="60" width="20" height="20" uuid="53050261-f106-4840-9e60-538ab7184904"/>
+				<imageExpression><![CDATA["E:/ASMS 50/ASMS 5.0/src/lk/ijse/asms/view/assets/icons/icons8-sphere-50.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="0" y="100" width="20" height="20" uuid="1295a698-750d-4c6a-8aeb-b14b62a299ab"/>
+				<imageExpression><![CDATA["E:/ASMS 50/ASMS 5.0/src/lk/ijse/asms/view/assets/icons/icons8-sphere-50.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="0" y="140" width="20" height="20" uuid="0de9308d-0851-45bb-80bc-b0c0fb066a74"/>
+				<imageExpression><![CDATA["E:/ASMS 50/ASMS 5.0/src/lk/ijse/asms/view/assets/icons/icons8-sphere-50.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="0" y="211" width="545" height="1" uuid="9a8621a8-e786-4787-acfb-b513dfcf68b8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="30" y="181" width="100" height="20" uuid="5eaf2d7d-34f6-4ecd-85d7-9aeafa65ba45"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Table Count]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="181" width="20" height="20" uuid="669d5f2b-2412-46a0-b5f5-51e2e7de0173"/>
+				<imageExpression><![CDATA["E:/ASMS 50/ASMS 5.0/src/lk/ijse/asms/view/assets/icons/icons8-sphere-50.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="1" y="252" width="545" height="1" uuid="a40fc36f-73e7-48ae-9e5f-9b44cce334df">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="31" y="222" width="100" height="20" uuid="cb7cee2c-e1dd-4b28-b140-c665daf1ea0b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Strat Date]]></text>
+			</staticText>
+			<image>
+				<reportElement x="1" y="222" width="20" height="20" uuid="acc97875-3290-4db2-b731-f1a421e26309"/>
+				<imageExpression><![CDATA["E:/ASMS 50/ASMS 5.0/src/lk/ijse/asms/view/assets/icons/icons8-sphere-50.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="1" y="293" width="545" height="1" uuid="9683dba4-fb78-432a-b57d-30b88b955f77">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="31" y="263" width="100" height="20" uuid="0dc2849a-aef9-4b64-9ccf-49c07a80193a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[End Date]]></text>
+			</staticText>
+			<image>
+				<reportElement x="1" y="263" width="20" height="20" uuid="2db21470-575d-42af-8f14-ae7d54066b66"/>
+				<imageExpression><![CDATA["E:/ASMS 50/ASMS 5.0/src/lk/ijse/asms/view/assets/icons/icons8-sphere-50.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="1" y="334" width="545" height="1" uuid="c61a245f-f021-40e2-9095-055bb3ce4280">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="31" y="304" width="100" height="20" uuid="03639a05-97ee-479a-b588-310f4cfaf646"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Data Poin]]></text>
+			</staticText>
+			<image>
+				<reportElement x="1" y="304" width="20" height="20" uuid="744c8280-b386-4d19-9f35-8ba8a3153d9c"/>
+				<imageExpression><![CDATA["E:/ASMS 50/ASMS 5.0/src/lk/ijse/asms/view/assets/icons/icons8-sphere-50.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="1" y="375" width="545" height="1" uuid="1e39bb92-f31b-42aa-82e2-9a7641212a7c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="31" y="345" width="100" height="20" uuid="0b6c76e3-5fb6-477c-add7-05cdc4989a17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Power Point]]></text>
+			</staticText>
+			<image>
+				<reportElement x="1" y="345" width="20" height="20" uuid="9110b008-bd00-4a6c-a915-344d4f3d67db"/>
+				<imageExpression><![CDATA["E:/ASMS 50/ASMS 5.0/src/lk/ijse/asms/view/assets/icons/icons8-sphere-50.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="31" y="386" width="100" height="20" uuid="99bebbd0-e192-468a-a379-f26da33d76e1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Camera Point]]></text>
+			</staticText>
+			<image>
+				<reportElement x="1" y="386" width="20" height="20" uuid="a91b6711-1c86-4631-9407-d9aa18f32d33"/>
+				<imageExpression><![CDATA["E:/ASMS 50/ASMS 5.0/src/lk/ijse/asms/view/assets/icons/icons8-sphere-50.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="130" y="60" width="20" height="20" uuid="af89a589-b49d-40b5-b12e-52283bd873ea"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="100" width="20" height="20" uuid="6a408186-3088-4cac-ae30-a5db5c04de14"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="140" width="20" height="20" uuid="bf52229d-883c-4858-bfe4-a2e807852668"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="181" width="20" height="20" uuid="04fa4c89-b49b-4388-9962-b9bdcdd685c8"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="131" y="222" width="20" height="20" uuid="b1ba8ac6-6421-451c-b342-76a1595f58fa"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="131" y="263" width="20" height="20" uuid="ea5e0807-b6a8-4b5f-8795-6ddc65104c82"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="131" y="304" width="20" height="20" uuid="6a9d526e-c5e1-4c7a-be31-39aee90275c0"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="131" y="345" width="20" height="20" uuid="1439026a-d81e-49a4-9900-3517ee448f3a"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="131" y="386" width="20" height="20" uuid="0ec04530-9468-470e-ab12-a66a8607584a"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="415" width="545" height="1" uuid="86a86c26-1ccb-4243-9b14-ad8fc3bcd608">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="54" uuid="f998aa62-c4ec-4e28-a9a0-8bbe4f683c3f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[------------------ End Of Document ------------------]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

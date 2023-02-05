@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="addCustomerPane" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.asms.controller.customer.AddCustomerFormController">
+   <children>
+      <Pane layoutX="200.0" prefHeight="57.0" prefWidth="1240.0" style="-fx-background-color: FEFBF6;" />
+      <Pane prefHeight="899.0" prefWidth="200.0" style="-fx-background-color: #130f40;">
+         <children>
+            <JFXButton layoutX="32.0" layoutY="117.0" prefHeight="54.0" prefWidth="137.0" style="-fx-background-color: green;" text="Add" textFill="#fff4f4">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="32.0" layoutY="207.0" onAction="#UpdateCustomerFormOnAction" prefHeight="54.0" prefWidth="137.0" style="-fx-background-color: green;" text="Update" textFill="#fff4f4">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Button layoutX="1369.0" layoutY="14.0" mnemonicParsing="false" onAction="#backManagerFormOnAction" style="-fx-background-color: red; -fx-background-radius: 30;" text="BACK" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="230.0" layoutY="1.0" prefHeight="57.0" prefWidth="296.0" text="Add Customer Form">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtCusName" alignment="CENTER" layoutX="448.0" layoutY="121.0" onKeyReleased="#keyReleasedOnAction" prefHeight="46.0" prefWidth="390.0" promptText="Name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtCusAddress" alignment="CENTER" layoutX="448.0" layoutY="201.0" onKeyReleased="#keyReleasedOnAction" prefHeight="46.0" prefWidth="390.0" promptText="Address">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtCusEmail" alignment="CENTER" layoutX="448.0" layoutY="281.0" onKeyReleased="#keyReleasedOnAction" prefHeight="46.0" prefWidth="390.0" promptText="Email">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtCusContact" alignment="CENTER" layoutX="448.0" layoutY="361.0" onKeyReleased="#keyReleasedOnAction" prefHeight="46.0" prefWidth="390.0" promptText="Contact">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtCusManagerName" alignment="CENTER" layoutX="448.0" layoutY="441.0" onKeyReleased="#keyReleasedOnAction" prefHeight="46.0" prefWidth="390.0" promptText="It Manager Name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtCusMangerContact" alignment="CENTER" layoutX="448.0" layoutY="521.0" onKeyReleased="#keyReleasedOnAction" prefHeight="46.0" prefWidth="390.0" promptText="It Manager Contact">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton fx:id="btnAddCustomer" layoutX="892.0" layoutY="666.0" onAction="#addCustomerOnAction" prefHeight="54.0" prefWidth="220.0" style="-fx-background-color: green;" text="Add Customer" textFill="#fff6f6">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

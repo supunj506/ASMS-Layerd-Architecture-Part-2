@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="jobReportPane" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.asms.controller.report.JobReportFormController">
+   <children>
+      <Pane layoutX="200.0" prefHeight="57.0" prefWidth="1240.0" style="-fx-background-color: FEFBF6;" />
+      <Pane prefHeight="899.0" prefWidth="200.0" style="-fx-background-color: #130f40;" />
+      <Button layoutX="1369.0" layoutY="14.0" mnemonicParsing="false" onAction="#backManagerFormOnAction" style="-fx-background-color: red; -fx-background-radius: 30;" text="BACK" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="230.0" layoutY="1.0" prefHeight="57.0" prefWidth="296.0" text="Job Report Form">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnGetReport" layoutX="892.0" layoutY="666.0" onAction="#getReportOnAction" prefHeight="54.0" prefWidth="220.0" style="-fx-background-color: green;" text="get Report" textFill="#fff6f6">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="32.0" layoutY="117.0" onAction="#contractPaymentFormOnAction" prefHeight="54.0" prefWidth="137.0" style="-fx-background-color: green;" text="Contract Payslip" textFill="#fff4f4">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="32.0" layoutY="207.0" onAction="#jobReportFormOnAction" prefHeight="54.0" prefWidth="137.0" style="-fx-background-color: green;" text="Job Report" textFill="#fff4f4">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXComboBox fx:id="cmbJob" layoutX="293.0" layoutY="168.0" onAction="#cmbJobOnAction" prefHeight="44.0" prefWidth="558.0" promptText="Select Job" style="-fx-font-size: 20;" />
+   </children>
+</AnchorPane>

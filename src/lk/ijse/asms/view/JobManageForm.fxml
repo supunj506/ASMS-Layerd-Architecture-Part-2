@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="jobManagePane" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.asms.controller.JobManageFormController">
+   <children>
+      <Pane prefHeight="899.0" prefWidth="200.0" style="-fx-background-color: #130f40;">
+         <children>
+            <JFXButton layoutX="32.0" layoutY="115.0" onAction="#addJobOnAction" prefHeight="54.0" prefWidth="137.0" style="-fx-background-color: green;" text="Add Job" textFill="#fff4f4">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="32.0" layoutY="205.0" onAction="#callJobOnAction" prefHeight="54.0" prefWidth="137.0" style="-fx-background-color: green;" text="Call Job" textFill="#fff4f4">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="32.0" layoutY="295.0" onAction="#finishJobOnAction" prefHeight="54.0" prefWidth="137.0" style="-fx-background-color: green;" text="Finish Job" textFill="#fff4f4">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Pane layoutX="200.0" prefHeight="57.0" prefWidth="1240.0" style="-fx-background-color: FEFBF6;" />
+      <Button layoutX="1369.0" layoutY="14.0" mnemonicParsing="false" onAction="#backManagerFormOnAction" style="-fx-background-color: red; -fx-background-radius: 30;" text="BACK" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
