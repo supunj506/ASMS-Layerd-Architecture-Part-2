@@ -11,7 +11,6 @@ import lk.ijse.asms.dao.custom.impl.*;
 import lk.ijse.asms.dao.util.PaymentPlaneType;
 import lk.ijse.asms.dto.EmployeeDTO;
 import lk.ijse.asms.dto.JobDTO;
-import lk.ijse.asms.dto.SubPaymentDTO;
 import lk.ijse.asms.util.Navigation;
 import lk.ijse.asms.util.Routes;
 import net.sf.jasperreports.engine.*;
@@ -72,7 +71,7 @@ public class PaymentReportFormController {
         String jobId=temp[1];
         String subcPayId=temp[0];
         try {
-            EmployeeDTO employeeDTO = employeeDAO.getEmployee(employeeId);
+            EmployeeDTO employeeDTO = employeeDAO.getEmployeeByNic(employeeId);
             HashMap paramMap=new HashMap();
             paramMap.put("Eid", employeeDTO.getId());
             paramMap.put("Enic", employeeDTO.getNic());

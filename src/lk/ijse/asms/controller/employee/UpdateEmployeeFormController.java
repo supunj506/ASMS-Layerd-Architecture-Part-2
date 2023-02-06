@@ -1,16 +1,14 @@
 package lk.ijse.asms.controller.employee;
 
 import com.jfoenix.controls.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.asms.dao.custom.EmployeeDAO;
-import lk.ijse.asms.dao.custom.impl.EmployeeDAOImpl;
+import lk.ijse.asms.bo.custom.EmployeeBO;
+import lk.ijse.asms.bo.custom.impl.EmployeeBOImpl;
 import lk.ijse.asms.dto.EmployeeDTO;
 import lk.ijse.asms.util.Navigation;
 import lk.ijse.asms.util.Routes;
@@ -19,12 +17,12 @@ import lk.ijse.asms.util.ValidateUtil;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 public class UpdateEmployeeFormController {
-    EmployeeDAO employeeDAO=new EmployeeDAOImpl();
+    EmployeeBO employeeBO=new EmployeeBOImpl();
+
     public AnchorPane updateEmployeePane;
     public JFXTextField txtId;
     public JFXTextField txtName;
@@ -52,12 +50,9 @@ public class UpdateEmployeeFormController {
     public void initialize(){
         loadAllNic();
 
-
         Pattern address=Pattern.compile("^[A-z0-9/]{4,40}$");
         Pattern email=Pattern.compile("^[a-z0-9]{4,40}@(gmail|yahoo|ymail).com$");
         Pattern contact=Pattern.compile("^(\\+94|0)(70|71|72|75|76|77|78)[0-9]{7}$");
-
-        //map.put(txtNic,nic);
 
         map.put(txtAddress,address);
         map.put(txtEmail,email);
@@ -67,12 +62,7 @@ public class UpdateEmployeeFormController {
 
     private void loadAllNic() {
         try {
-            ArrayList<EmployeeDTO> allEmployeeDTO = employeeDAO.getAllEmployee();
-            ObservableList<String> allNic= FXCollections.observableArrayList();
-            for (EmployeeDTO employeeDTO : allEmployeeDTO) {
-                allNic.add(employeeDTO.getNic());
-            }
-            cmbNic.setItems(allNic);
+            cmbNic.setItems(employeeBO.getAllEmployee());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -85,6 +75,7 @@ public class UpdateEmployeeFormController {
     public void backManagerFormOnAction(ActionEvent actionEvent) throws IOException {
         Navigation.navigate(Routes.MANAGER_DASHBOARD,updateEmployeePane);
     }
+
 boolean getAllData=true;
     public void updateEmployeeOnAction(ActionEvent actionEvent) {
         String empType=getEmpType();
@@ -106,7 +97,7 @@ boolean getAllData=true;
                 LocalDate.parse(txtJoiningDate.getText())
         );
 
-            boolean update = employeeDAO.update(employeeDTO);
+            boolean update = employeeBO.updateEmployee(employeeDTO);
             if (update) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Update Employee Successfully !!!").show();
                 clean();
@@ -162,10 +153,9 @@ boolean getAllData=true;
         return "FEMALE";
     }
 
-
     public void cmbNicOnAction(ActionEvent actionEvent) {
         try {
-            EmployeeDTO employeeDTO = employeeDAO.getEmployee(String.valueOf(cmbNic.getValue()));
+            EmployeeDTO employeeDTO = employeeBO.getEmployeeByNic(String.valueOf(cmbNic.getValue()));
             setData(employeeDTO);
         } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.CONFIRMATION,""+e).show();
@@ -217,7 +207,8 @@ boolean getAllData=true;
     public void fullOnAction(ActionEvent actionEvent) {
         setDivision(false);
     }
-    public void cotractBaseOnAction(ActionEvent actionEvent) {
+
+    public void contractBaseOnAction(ActionEvent actionEvent) {
         setDivision(true);
     }
 
@@ -238,6 +229,7 @@ boolean getAllData=true;
         txtEmail.clear();
         txtContact.clear();
     }
+
     public void setDivision(boolean is){
         radioHelp.setDisable(is);
         radioDrive.setDisable(is);

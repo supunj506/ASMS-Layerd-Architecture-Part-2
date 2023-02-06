@@ -10,6 +10,8 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.asms.bo.custom.EmployeeBO;
+import lk.ijse.asms.bo.custom.impl.EmployeeBOImpl;
 import lk.ijse.asms.dao.custom.EmployeeDAO;
 import lk.ijse.asms.dao.custom.impl.EmployeeDAOImpl;
 import lk.ijse.asms.dto.EmployeeDTO;
@@ -24,7 +26,7 @@ import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 public class AddEmployeeFormController {
-    EmployeeDAO employeeDAO=new EmployeeDAOImpl();
+    EmployeeBO employeeBO=new EmployeeBOImpl();
 
     public JFXTextField txtNic;
     public JFXTextField txtName;
@@ -66,7 +68,7 @@ public class AddEmployeeFormController {
 boolean getAllData=true;
     public void addEmployeeOnAction(ActionEvent actionEvent) {
         try {
-            String id= employeeDAO.getNextEmployeeId();
+            String id= employeeBO.getNextEmployeeId();
             String gender=getGender();
             String type=getEmpType();
             String division=getDivision();
@@ -84,7 +86,7 @@ boolean getAllData=true;
                         division,
                         LocalDate.now()
                 );
-                boolean save = employeeDAO.saveEmployee(employeeDTO);
+                boolean save = employeeBO.saveEmployee(employeeDTO);
                 if(save){
                     new Alert(Alert.AlertType.CONFIRMATION,"Add Employee Successfully !!!").show();
                     setClear();
@@ -147,7 +149,6 @@ boolean getAllData=true;
         }
         return gender;
     }
-
 
     private void setClear() {
         txtNic.clear();

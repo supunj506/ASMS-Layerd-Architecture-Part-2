@@ -61,6 +61,7 @@ public class UpdateCustomerFormController {
 
     private void loadAllCustomer() {
         try {
+
             ArrayList<CustomerDTO> allCustomer = customerBO.getAllCustomer();
             ObservableList<String>obList= FXCollections.observableArrayList();
             for(CustomerDTO customerDTO : allCustomer){
@@ -122,6 +123,7 @@ public class UpdateCustomerFormController {
         txtCusManagerName.clear();
         txtCusMangerContact.clear();
         btnUpdateCustomer.setDisable(true);
+        
     }
 
     public void keyReleasedOnAction(KeyEvent keyEvent) {

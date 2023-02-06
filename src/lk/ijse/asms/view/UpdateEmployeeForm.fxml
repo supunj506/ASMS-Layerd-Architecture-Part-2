@@ -117,7 +117,7 @@
             <ToggleGroup fx:id="empType" />
          </toggleGroup>
       </JFXRadioButton>
-      <JFXRadioButton fx:id="radioContract" layoutX="814.0" layoutY="613.0" onAction="#cotractBaseOnAction" text="Contact Base" toggleGroup="$empType">
+      <JFXRadioButton fx:id="radioContract" layoutX="814.0" layoutY="613.0" onAction="#contractBaseOnAction" text="Contact Base" toggleGroup="$empType">
 
          <font>
             <Font size="20.0" />

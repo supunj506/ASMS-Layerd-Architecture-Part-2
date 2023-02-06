@@ -11,6 +11,6 @@ public interface EmployeeDAO extends CrudDAO<EmployeeDTO> {
     boolean update(EmployeeDTO employeeDTO) throws SQLException, ClassNotFoundException;
     boolean delete(String text) throws SQLException, ClassNotFoundException;
     ArrayList<EmployeeDTO> getAllEmployee() throws SQLException, ClassNotFoundException;
-    EmployeeDTO getEmployee(String nic) throws SQLException, ClassNotFoundException;
+    EmployeeDTO getEmployeeByNic(String nic) throws SQLException, ClassNotFoundException;
 
 }

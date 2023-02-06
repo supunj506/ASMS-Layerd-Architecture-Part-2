@@ -79,7 +79,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         return allEmployeeDTO;
     }
     @Override
-    public EmployeeDTO getEmployee(String nic) throws SQLException, ClassNotFoundException {
+    public EmployeeDTO getEmployeeByNic(String nic) throws SQLException, ClassNotFoundException {
         ResultSet rst= SQLUtil.execute("SELECT * FROM employee WHERE nic=?",nic);
         if(rst.next()){
            return new EmployeeDTO(

@@ -48,18 +48,7 @@ public class AddCustomerFormController {
         map.put(txtCusManagerName,cusManagerName);
         map.put(txtCusMangerContact,cusManagerContact);
     }
-    public void keyReleasedOnAction(KeyEvent keyEvent) {
-        ValidateUtil.validate(map,btnAddCustomer);
 
-        if(keyEvent.getCode()==KeyCode.ENTER){
-            Object response=ValidateUtil.validate(map,btnAddCustomer);
-            if(response instanceof JFXTextField){
-                JFXTextField txt=(JFXTextField)response;
-                txt.requestFocus();
-            }
-        }
-
-    }
     public void clearAllText(){
         txtCusName.clear();
         txtCusAddress.clear();
@@ -68,15 +57,6 @@ public class AddCustomerFormController {
         txtCusManagerName.clear();
         txtCusMangerContact.clear();
         btnAddCustomer.setDisable(true);
-    }
-
-
-    public void UpdateCustomerFormOnAction(ActionEvent actionEvent) throws IOException {
-        Navigation.navigate(Routes.UPDATE_CUSTOMER,addCustomerPane);
-    }
-
-    public void backManagerFormOnAction(ActionEvent actionEvent) throws IOException {
-        Navigation.navigate(Routes.MANAGER_DASHBOARD,addCustomerPane);
     }
 
     public void addCustomerOnAction(ActionEvent actionEvent) {
@@ -102,6 +82,27 @@ public class AddCustomerFormController {
             e.printStackTrace();
         }
 
+
+    }
+
+    public void UpdateCustomerFormOnAction(ActionEvent actionEvent) throws IOException {
+        Navigation.navigate(Routes.UPDATE_CUSTOMER,addCustomerPane);
+    }
+
+    public void backManagerFormOnAction(ActionEvent actionEvent) throws IOException {
+        Navigation.navigate(Routes.MANAGER_DASHBOARD,addCustomerPane);
+    }
+
+    public void keyReleasedOnAction(KeyEvent keyEvent) {
+        ValidateUtil.validate(map,btnAddCustomer);
+
+        if(keyEvent.getCode()==KeyCode.ENTER){
+            Object response=ValidateUtil.validate(map,btnAddCustomer);
+            if(response instanceof JFXTextField){
+                JFXTextField txt=(JFXTextField)response;
+                txt.requestFocus();
+            }
+        }
 
     }
 }
