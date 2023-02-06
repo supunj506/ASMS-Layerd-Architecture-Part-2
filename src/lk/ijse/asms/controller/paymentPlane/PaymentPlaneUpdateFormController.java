@@ -13,6 +13,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.asms.bo.custom.PaymentPlaneBO;
+import lk.ijse.asms.bo.custom.impl.PaymentPlaneBOImpl;
 import lk.ijse.asms.dao.custom.PaymentPlaneDAO;
 import lk.ijse.asms.dao.custom.impl.PaymentPlaneDAOImpl;
 import lk.ijse.asms.dao.util.PaymentPlaneType;
@@ -29,7 +31,7 @@ import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 public class PaymentPlaneUpdateFormController {
-    PaymentPlaneDAO paymentPlaneDAO=new PaymentPlaneDAOImpl();
+    PaymentPlaneBO paymentPlaneBO=new PaymentPlaneBOImpl();
 
     public AnchorPane paymentPlaneUpdatePane;
     public JFXTextField txtDescription;
@@ -57,18 +59,8 @@ public class PaymentPlaneUpdateFormController {
 
     private void loadPoint() {
         try {
-            ArrayList<PaymentPlaneDTO> pointDetails = paymentPlaneDAO.getAllPoint();
-            ObservableList<String>allPointName=FXCollections.observableArrayList();
-            ObservableList<PaymentPlaneTM> list= FXCollections.observableArrayList();
-            for(PaymentPlaneDTO temp:pointDetails){
-                allPointName.add(temp.getName());
-                list.add(new PaymentPlaneTM(
-                        temp.getName(),
-                        temp.getDescription(),
-                        temp.getUnitPrice()));
-            }
-            cmbPointType.setItems(allPointName);
-            tableView.setItems(list);
+            cmbPointType.setItems(paymentPlaneBO.getAllPointName());
+            tableView.setItems(paymentPlaneBO.getAllPointDetails());
         } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.CONFIRMATION,""+e).show();
 
@@ -76,21 +68,9 @@ public class PaymentPlaneUpdateFormController {
         }
     }
 
-
-
-    public void backManagerFormOnAction(ActionEvent actionEvent) throws IOException {
-        Navigation.navigate(Routes.MANAGER_DASHBOARD,paymentPlaneUpdatePane);
-    }
-
-
     public void updatePPPlaneOnAction(ActionEvent actionEvent) {
         try {
-            boolean isUpdate= paymentPlaneDAO.updatePPPlane(
-                    new PaymentPlaneDTO(
-                            String.valueOf(cmbPointType.getValue()),
-                            txtDescription.getText(),
-                            Double.parseDouble(txtUnitPrice.getText())));
-
+            boolean isUpdate= paymentPlaneBO.updatePointPaymentPlane(new PaymentPlaneDTO(String.valueOf(cmbPointType.getValue()),txtDescription.getText(), Double.parseDouble(txtUnitPrice.getText())));
             if(isUpdate){
                 new Alert(Alert.AlertType.CONFIRMATION,"Update Plane Successfully !!!").show();
                 clean();
@@ -128,7 +108,7 @@ public class PaymentPlaneUpdateFormController {
     private void setDescription() {
 
         try {
-            PaymentPlaneDTO pointDetails = paymentPlaneDAO.getPointDetails(setCmbPointType());
+            PaymentPlaneDTO pointDetails = paymentPlaneBO.getPointDetailsByType(setCmbPointType());
             txtDescription.setText(pointDetails.getDescription());
             txtUnitPrice.setText(String.valueOf(pointDetails.getUnitPrice()));
         } catch (SQLException | ClassNotFoundException e) {
@@ -147,5 +127,9 @@ public class PaymentPlaneUpdateFormController {
             pointType=PaymentPlaneType.CAMERA;
         }
         return pointType;
+    }
+
+    public void backManagerFormOnAction(ActionEvent actionEvent) throws IOException {
+        Navigation.navigate(Routes.MANAGER_DASHBOARD,paymentPlaneUpdatePane);
     }
 }
