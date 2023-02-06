@@ -29,7 +29,6 @@ import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 public class PaymentPlaneUpdateFormController {
-
     PaymentPlaneDAO paymentPlaneDAO=new PaymentPlaneDAOImpl();
 
     public AnchorPane paymentPlaneUpdatePane;

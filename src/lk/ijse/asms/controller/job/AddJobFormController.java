@@ -9,11 +9,8 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.asms.bo.AddJobBOImpl;
-import lk.ijse.asms.dao.custom.CustomerDAO;
-import lk.ijse.asms.dao.custom.JobDAO;
-import lk.ijse.asms.dao.custom.impl.CustomerDAOImpl;
-import lk.ijse.asms.dao.custom.impl.JobDAOImpl;
+import lk.ijse.asms.bo.custom.AddJobBO;
+import lk.ijse.asms.bo.custom.impl.AddJobBOImpl;
 import lk.ijse.asms.dto.CustomerDTO;
 import lk.ijse.asms.dto.JobDTO;
 import lk.ijse.asms.util.Navigation;
@@ -27,7 +24,7 @@ import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 public class AddJobFormController {
-    AddJobBOImpl addJobBO=new AddJobBOImpl();
+    AddJobBO addJobBO=new AddJobBOImpl();
 
     public AnchorPane addJobPane;
     public JFXRadioButton radioNew;

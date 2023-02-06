@@ -7,21 +7,22 @@ import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.asms.bo.custom.CustomerBO;
+import lk.ijse.asms.bo.custom.impl.CustomerBOImpl;
 import lk.ijse.asms.dao.custom.CustomerDAO;
 import lk.ijse.asms.dao.custom.impl.CustomerDAOImpl;
 import lk.ijse.asms.dto.CustomerDTO;
 import lk.ijse.asms.util.Navigation;
 import lk.ijse.asms.util.Routes;
 import lk.ijse.asms.util.ValidateUtil;
-
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 public class AddCustomerFormController {
-    CustomerDAO customerDAO=new CustomerDAOImpl();
+    CustomerBO customerBO=new CustomerBOImpl();
+
     public AnchorPane addCustomerPane;
     public JFXTextField txtCusName;
     public JFXTextField txtCusAddress;
@@ -80,7 +81,7 @@ public class AddCustomerFormController {
 
     public void addCustomerOnAction(ActionEvent actionEvent) {
         try {
-            String id = customerDAO.getNextCustomerId();
+            String id = customerBO.getNextCustomerId();
             CustomerDTO customerDTO=new CustomerDTO(
                     id,
                     txtCusName.getText(),
@@ -91,7 +92,7 @@ public class AddCustomerFormController {
                     txtCusMangerContact.getText()
 
             );
-            boolean save = customerDAO.saveCustomer(customerDTO);
+            boolean save = customerBO.saveCustomer(customerDTO);
             if(save){
                 new Alert(Alert.AlertType.CONFIRMATION,"Save  Customer Successfully !!!").show();
                 clearAllText();

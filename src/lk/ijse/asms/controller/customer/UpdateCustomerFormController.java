@@ -10,6 +10,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.asms.bo.custom.CustomerBO;
+import lk.ijse.asms.bo.custom.impl.CustomerBOImpl;
 import lk.ijse.asms.dao.custom.CustomerDAO;
 import lk.ijse.asms.dao.custom.impl.CustomerDAOImpl;
 import lk.ijse.asms.dto.CustomerDTO;
@@ -25,7 +27,8 @@ import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 public class UpdateCustomerFormController {
-    CustomerDAO customerDAO=new CustomerDAOImpl();
+    CustomerBO customerBO=new CustomerBOImpl();
+
     public AnchorPane updateCustomerPane;
     public JFXTextField txtCusName;
     public JFXTextField txtCusAddress;
@@ -36,6 +39,7 @@ public class UpdateCustomerFormController {
     public JFXComboBox <String>cmbCusId;
     public JFXButton btnUpdateCustomer;
     LinkedHashMap<JFXTextField,Pattern> map=new LinkedHashMap<>();
+    String cusId=null;
 
     public void initialize(){
         loadAllCustomer();
@@ -57,7 +61,7 @@ public class UpdateCustomerFormController {
 
     private void loadAllCustomer() {
         try {
-            ArrayList<CustomerDTO> allCustomer = customerDAO.getAllCustomer();
+            ArrayList<CustomerDTO> allCustomer = customerBO.getAllCustomer();
             ObservableList<String>obList= FXCollections.observableArrayList();
             for(CustomerDTO customerDTO : allCustomer){
                 obList.add(customerDTO.getId()+" / "+ customerDTO.getName());
@@ -68,13 +72,6 @@ public class UpdateCustomerFormController {
         }
     }
 
-    public void addCustomerFormOnAction(ActionEvent actionEvent) throws IOException {
-        Navigation.navigate(Routes.ADD_CUSTOMER,updateCustomerPane);
-    }
-    public void backManagerFormOnAction(ActionEvent actionEvent) throws IOException {
-        Navigation.navigate(Routes.MANAGER_DASHBOARD,updateCustomerPane);
-    }
-String cusId=null;
     public void UpdateCustomerOnAction(ActionEvent actionEvent) {
         CustomerDTO customer =new CustomerDTO(
                 cusId,
@@ -85,16 +82,32 @@ String cusId=null;
         txtCusManagerName.getText(),
         txtCusMangerContact.getText()
         );
-
-
         try {
-            boolean isUpdate = customerDAO.update(customer);
+            boolean isUpdate = customerBO.update(customer);
             if(isUpdate){
                 new Alert(Alert.AlertType.CONFIRMATION,"Update Customer Successfully !!!").show();
                 clean();
 
             }
         } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void cmbCusIdOnAction(ActionEvent actionEvent) {
+        String[]id=String.valueOf(cmbCusId.getValue()).split(" / ");
+        cusId=id[0];
+        try {
+            CustomerDTO customerDTO = customerBO.getCustomerById(id[0]);
+            assert customerDTO != null;
+            txtCusName.setText(customerDTO.getName());
+            txtCusAddress.setText(customerDTO.getAddress());
+            txtCusEmail.setText(customerDTO.getEmail());
+            txtCusContact.setText(customerDTO.getContact());
+            txtCusManagerName.setText(customerDTO.getItManagerName());
+            txtCusMangerContact.setText(customerDTO.getItManagerContact());
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -111,25 +124,6 @@ String cusId=null;
         btnUpdateCustomer.setDisable(true);
     }
 
-    public void cmbCusIdOnAction(ActionEvent actionEvent) {
-        String[]id=String.valueOf(cmbCusId.getValue()).split(" / ");
-        cusId=id[0];
-        try {
-            CustomerDTO customerDTO = customerDAO.getCustomerById(id[0]);
-            assert customerDTO != null;
-            txtCusName.setText(customerDTO.getName());
-            txtCusAddress.setText(customerDTO.getAddress());
-            txtCusEmail.setText(customerDTO.getEmail());
-            txtCusContact.setText(customerDTO.getContact());
-            txtCusManagerName.setText(customerDTO.getItManagerName());
-            txtCusMangerContact.setText(customerDTO.getItManagerContact());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
-
     public void keyReleasedOnAction(KeyEvent keyEvent) {
         ValidateUtil.validate(map,btnUpdateCustomer);
 
@@ -140,5 +134,13 @@ String cusId=null;
                 txt.requestFocus();
             }
         }
+    }
+
+    public void addCustomerFormOnAction(ActionEvent actionEvent) throws IOException {
+        Navigation.navigate(Routes.ADD_CUSTOMER,updateCustomerPane);
+    }
+
+    public void backManagerFormOnAction(ActionEvent actionEvent) throws IOException {
+        Navigation.navigate(Routes.MANAGER_DASHBOARD,updateCustomerPane);
     }
 }

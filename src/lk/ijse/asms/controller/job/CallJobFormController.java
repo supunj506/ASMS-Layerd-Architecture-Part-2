@@ -10,20 +10,20 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.asms.bo.CallJobBOImpl;
+import lk.ijse.asms.bo.custom.CallJobBO;
+import lk.ijse.asms.bo.custom.impl.CallJobBOImpl;
 import lk.ijse.asms.dto.CustomDTO;
 import lk.ijse.asms.dto.JobDTO;
 import lk.ijse.asms.util.Navigation;
 import lk.ijse.asms.util.Routes;
 import lk.ijse.asms.view.tm.TeamTM;
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class CallJobFormController {
-    CallJobBOImpl callJobBO=new CallJobBOImpl();
+    CallJobBO callJobBO=new CallJobBOImpl();
 
     public AnchorPane callJobPane;
     public JFXComboBox <String>cmbEmployee;

@@ -9,7 +9,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.asms.bo.FinishJobBO;
+import lk.ijse.asms.bo.custom.FinishJobBO;
+import lk.ijse.asms.bo.custom.impl.FinishJobBOImpl;
 import lk.ijse.asms.dto.SubPaymentDTO;
 import lk.ijse.asms.util.Navigation;
 import lk.ijse.asms.util.Routes;
@@ -20,7 +21,7 @@ import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 public class FinishJobFormController {
-    FinishJobBO finishJobBO=new FinishJobBO();
+    FinishJobBO finishJobBOImpl =new FinishJobBOImpl();
 
     public AnchorPane finishJobPane;
     public JFXComboBox<String> cmbJob;
@@ -41,7 +42,7 @@ public class FinishJobFormController {
 
     private void loadJob() {
         try {
-            ObservableList<String> jobList = finishJobBO.getFinishJob("DOING");
+            ObservableList<String> jobList = finishJobBOImpl.getFinishJob("DOING");
             cmbJob.setItems(jobList);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -62,7 +63,7 @@ public class FinishJobFormController {
                    Integer.parseInt(txtCamera.getText()));
 
         try {
-            boolean isFinishJob=finishJobBO.finishJob(jobId,subPaymentDTO);/* only need to be here */
+            boolean isFinishJob= finishJobBOImpl.finishJob(jobId,subPaymentDTO);/* only need to be here */
             if (isFinishJob){
                 clean();
                 new Alert(Alert.AlertType.CONFIRMATION,"Finish The Job Successfully !!!").show();

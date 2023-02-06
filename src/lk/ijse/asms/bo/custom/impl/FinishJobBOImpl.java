@@ -1,6 +1,7 @@
-package lk.ijse.asms.bo;
+package lk.ijse.asms.bo.custom.impl;
 
 import javafx.collections.ObservableList;
+import lk.ijse.asms.bo.custom.FinishJobBO;
 import lk.ijse.asms.dao.custom.JobDAO;
 import lk.ijse.asms.dao.custom.PaymentPlaneDAO;
 import lk.ijse.asms.dao.custom.QueryDAO;
@@ -20,7 +21,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-public class FinishJobBO {
+public class FinishJobBOImpl implements FinishJobBO {
     SubcPaymentDAO paymentDAO=new SubcPaymentDAOImpl();
     JobDAO jobDAO=new JobDAOImpl();
     QueryDAO queryDAO=new QueryDAOImpl();

@@ -1,5 +1,6 @@
-package lk.ijse.asms.bo;
+package lk.ijse.asms.bo.custom.impl;
 
+import lk.ijse.asms.bo.custom.AddJobBO;
 import lk.ijse.asms.dao.custom.CustomerDAO;
 import lk.ijse.asms.dao.custom.JobDAO;
 import lk.ijse.asms.dao.custom.impl.CustomerDAOImpl;
@@ -10,7 +11,7 @@ import lk.ijse.asms.dto.JobDTO;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class AddJobBOImpl {
+public class AddJobBOImpl implements AddJobBO {
     CustomerDAO customerDAO=new CustomerDAOImpl();
     JobDAO jobDAO=new JobDAOImpl();
 

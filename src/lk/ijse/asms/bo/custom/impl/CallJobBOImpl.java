@@ -1,5 +1,6 @@
-package lk.ijse.asms.bo;
+package lk.ijse.asms.bo.custom.impl;
 import javafx.collections.ObservableList;
+import lk.ijse.asms.bo.custom.CallJobBO;
 import lk.ijse.asms.dao.custom.*;
 import lk.ijse.asms.dao.custom.impl.*;
 import lk.ijse.asms.db.DBConnection;
@@ -12,7 +13,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CallJobBOImpl {
+public class CallJobBOImpl implements CallJobBO {
     VehicleDAO vehicleDAO=new VehicleDAOImpl();
     JobDAO jobDAO=new JobDAOImpl();
     TeamDAO teamDAO=new TeamDAOImpl();
