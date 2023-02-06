@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.asms.bo.custom.VehicleBO;
+import lk.ijse.asms.bo.custom.impl.VehicleBOImpl;
 import lk.ijse.asms.dao.custom.VehicleDAO;
 import lk.ijse.asms.dao.custom.impl.VehicleDAOImpl;
 import lk.ijse.asms.dto.VehicleDTO;
@@ -16,8 +18,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class AddVehicleFormController {
-
-    VehicleDAO vehicleDAO=new VehicleDAOImpl();
+    VehicleBO vehicleBO=new VehicleBOImpl();
 
     public AnchorPane vehicleManagePane;
     public JFXTextField txtRegNo;
@@ -59,13 +60,13 @@ public class AddVehicleFormController {
             new Alert(Alert.AlertType.ERROR,"please Select Fuel Type !!!").show();
         }
         if(txtRegNo.getText().equals(null)){
-            new Alert(Alert.AlertType.ERROR,"please Enter Registation Number !!!").show();
+            new Alert(Alert.AlertType.ERROR,"please Enter Registration Number !!!").show();
         }else {
 
             VehicleDTO vehicleDTO = new VehicleDTO(txtRegNo.getText(), type, txtColour.getText(), fuelType, txtBrand.getText());
 
 
-            boolean isAdd = vehicleDAO.save(vehicleDTO);
+            boolean isAdd = vehicleBO.saveVehicle(vehicleDTO);
             if (isAdd) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Add Vehicle Success !!!").show();
             }
