@@ -15,6 +15,8 @@ public class AddJobBOImpl implements AddJobBO {
     CustomerDAO customerDAO=new CustomerDAOImpl();
     JobDAO jobDAO=new JobDAOImpl();
 
+
+
     public String getNextJobId() throws SQLException, ClassNotFoundException {
         return jobDAO.getNextJobId();
     }

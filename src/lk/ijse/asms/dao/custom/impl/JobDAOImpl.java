@@ -1,6 +1,6 @@
 package lk.ijse.asms.dao.custom.impl;
 
-import lk.ijse.asms.dao.util.SQLUtil;
+import lk.ijse.asms.dao.SQLUtil;
 import lk.ijse.asms.dao.custom.JobDAO;
 import lk.ijse.asms.dto.JobDTO;
 

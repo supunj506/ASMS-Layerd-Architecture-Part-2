@@ -100,7 +100,7 @@ public class UpdateCustomerFormController {
         String[]id=String.valueOf(cmbCusId.getValue()).split(" / ");
         cusId=id[0];
         try {
-            CustomerDTO customerDTO = customerBO.getCustomerById(id[0]);
+            CustomerDTO customerDTO = customerBO.getCustomerById(cusId);
             assert customerDTO != null;
             txtCusName.setText(customerDTO.getName());
             txtCusAddress.setText(customerDTO.getAddress());

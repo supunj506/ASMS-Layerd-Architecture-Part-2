@@ -1,16 +1,15 @@
 package lk.ijse.asms.dao.custom.impl;
 
-import lk.ijse.asms.dao.CrudDAO;
 import lk.ijse.asms.dao.custom.CustomerDAO;
 import lk.ijse.asms.dto.CustomerDTO;
-import lk.ijse.asms.dao.util.SQLUtil;
-import lk.ijse.asms.entity.Customer;
+import lk.ijse.asms.dao.SQLUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CustomerDAOImpl implements CustomerDAO{
+
 
     @Override
     public String getNextCustomerId() throws SQLException, ClassNotFoundException {

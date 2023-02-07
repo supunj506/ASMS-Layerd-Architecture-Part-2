@@ -2,11 +2,9 @@ package lk.ijse.asms.dao.custom.impl;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import lk.ijse.asms.dao.util.SQLUtil;
+import lk.ijse.asms.dao.SQLUtil;
 import lk.ijse.asms.dao.custom.QueryDAO;
 import lk.ijse.asms.dto.CustomDTO;
-import lk.ijse.asms.dto.CustomerDTO;
-import lk.ijse.asms.view.tm.TeamTM;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

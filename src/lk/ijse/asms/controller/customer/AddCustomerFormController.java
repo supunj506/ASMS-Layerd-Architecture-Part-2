@@ -9,8 +9,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.asms.bo.custom.CustomerBO;
 import lk.ijse.asms.bo.custom.impl.CustomerBOImpl;
-import lk.ijse.asms.dao.custom.CustomerDAO;
-import lk.ijse.asms.dao.custom.impl.CustomerDAOImpl;
+import lk.ijse.asms.dao.DAOFactory;
 import lk.ijse.asms.dto.CustomerDTO;
 import lk.ijse.asms.util.Navigation;
 import lk.ijse.asms.util.Routes;
@@ -23,6 +22,7 @@ import java.util.regex.Pattern;
 public class AddCustomerFormController {
     CustomerBO customerBO=new CustomerBOImpl();
 
+
     public AnchorPane addCustomerPane;
     public JFXTextField txtCusName;
     public JFXTextField txtCusAddress;
@@ -32,6 +32,7 @@ public class AddCustomerFormController {
     public JFXTextField txtCusMangerContact;
     public JFXButton btnAddCustomer;
     LinkedHashMap<JFXTextField,Pattern> map=new LinkedHashMap<>();
+
     public void initialize(){
 
         Pattern cusName=Pattern.compile("^[A-z ]{3,30}$");

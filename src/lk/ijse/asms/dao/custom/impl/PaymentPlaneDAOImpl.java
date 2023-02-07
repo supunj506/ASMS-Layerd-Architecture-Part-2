@@ -1,7 +1,7 @@
 package lk.ijse.asms.dao.custom.impl;
 
 import lk.ijse.asms.dao.util.PaymentPlaneType;
-import lk.ijse.asms.dao.util.SQLUtil;
+import lk.ijse.asms.dao.SQLUtil;
 import lk.ijse.asms.dao.custom.PaymentPlaneDAO;
 import lk.ijse.asms.dto.PaymentPlaneDTO;
 import java.sql.ResultSet;

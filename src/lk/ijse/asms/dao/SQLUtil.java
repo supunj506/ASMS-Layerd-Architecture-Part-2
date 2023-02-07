@@ -1,4 +1,4 @@
-package lk.ijse.asms.dao.util;
+package lk.ijse.asms.dao;
 
 import lk.ijse.asms.db.DBConnection;
 
@@ -8,6 +8,7 @@ import java.sql.SQLException;
 public class SQLUtil {
     public static <T>T execute(String sql, Object... args) throws SQLException, ClassNotFoundException {
         PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql);
+
 
         for (int i = 0; i < args.length; i++) {
             pstm.setObject((i + 1), args[i]);

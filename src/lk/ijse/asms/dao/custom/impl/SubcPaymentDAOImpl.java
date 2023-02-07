@@ -1,12 +1,10 @@
 package lk.ijse.asms.dao.custom.impl;
 import lk.ijse.asms.dao.custom.SubcPaymentDAO;
 import lk.ijse.asms.dto.SubPaymentDTO;
-import lk.ijse.asms.dao.util.SQLUtil;
+import lk.ijse.asms.dao.SQLUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class SubcPaymentDAOImpl implements SubcPaymentDAO {
     @Override

@@ -2,7 +2,7 @@ package lk.ijse.asms.dao.custom.impl;
 
 import lk.ijse.asms.dao.custom.EmployeeDAO;
 import lk.ijse.asms.dto.EmployeeDTO;
-import lk.ijse.asms.dao.util.SQLUtil;
+import lk.ijse.asms.dao.SQLUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
