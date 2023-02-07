@@ -3,6 +3,7 @@ package lk.ijse.asms.bo.custom.impl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lk.ijse.asms.bo.custom.EmployeeBO;
+import lk.ijse.asms.dao.DAOFactory;
 import lk.ijse.asms.dao.custom.EmployeeDAO;
 import lk.ijse.asms.dao.custom.impl.EmployeeDAOImpl;
 import lk.ijse.asms.dto.EmployeeDTO;
@@ -11,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class EmployeeBOImpl implements EmployeeBO {
-    EmployeeDAO employeeDAO=new EmployeeDAOImpl();
+    EmployeeDAO employeeDAO=(EmployeeDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.EMPLOYEE);
 
     public String getNextEmployeeId() throws SQLException, ClassNotFoundException {
         return employeeDAO.getNextEmployeeId();

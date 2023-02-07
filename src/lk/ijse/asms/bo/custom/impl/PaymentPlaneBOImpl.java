@@ -3,6 +3,7 @@ package lk.ijse.asms.bo.custom.impl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lk.ijse.asms.bo.custom.PaymentPlaneBO;
+import lk.ijse.asms.dao.DAOFactory;
 import lk.ijse.asms.dao.custom.PaymentPlaneDAO;
 import lk.ijse.asms.dao.custom.impl.PaymentPlaneDAOImpl;
 import lk.ijse.asms.dao.util.PaymentPlaneType;
@@ -12,7 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class PaymentPlaneBOImpl implements PaymentPlaneBO {
-    PaymentPlaneDAO paymentPlaneDAO=new PaymentPlaneDAOImpl();
+    PaymentPlaneDAO paymentPlaneDAO=(PaymentPlaneDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PAYMENTPLANE);
 
     public ObservableList<PaymentPlaneTM> getAllPointDetails() throws SQLException, ClassNotFoundException {
         ArrayList<PaymentPlaneDTO> allPoint = paymentPlaneDAO.getAllPoint();

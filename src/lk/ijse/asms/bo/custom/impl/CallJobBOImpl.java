@@ -1,6 +1,7 @@
 package lk.ijse.asms.bo.custom.impl;
 import javafx.collections.ObservableList;
 import lk.ijse.asms.bo.custom.CallJobBO;
+import lk.ijse.asms.dao.DAOFactory;
 import lk.ijse.asms.dao.custom.*;
 import lk.ijse.asms.dao.custom.impl.*;
 import lk.ijse.asms.db.DBConnection;
@@ -14,11 +15,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CallJobBOImpl implements CallJobBO {
-    VehicleDAO vehicleDAO=new VehicleDAOImpl();
-    JobDAO jobDAO=new JobDAOImpl();
-    TeamDAO teamDAO=new TeamDAOImpl();
-    EmpTeamDAO empTeamDAO=new EmpTeamDAOImpl();
-    QueryDAO queryDAO=new QueryDAOImpl();
+
+    VehicleDAO vehicleDAO=(VehicleDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.VEHICLE);
+    JobDAO jobDAO=(JobDAO)DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.JOB);
+    TeamDAO teamDAO=(TeamDAO)DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.TEAM);
+    EmpTeamDAO empTeamDAO=(EmpTeamDAO)DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.EMPTEAM);
+    QueryDAO queryDAO=(QueryDAO)DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.QUERY);
 
     public boolean callJob(JobDTO jobDTO, ObservableList<TeamTM>list) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();

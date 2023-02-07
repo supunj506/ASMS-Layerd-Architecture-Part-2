@@ -1,6 +1,8 @@
 package lk.ijse.asms.bo.custom.impl;
 
 import lk.ijse.asms.bo.custom.AddJobBO;
+import lk.ijse.asms.dao.DAOFactory;
+import lk.ijse.asms.dao.SuperDAO;
 import lk.ijse.asms.dao.custom.CustomerDAO;
 import lk.ijse.asms.dao.custom.JobDAO;
 import lk.ijse.asms.dao.custom.impl.CustomerDAOImpl;
@@ -12,10 +14,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class AddJobBOImpl implements AddJobBO {
-    CustomerDAO customerDAO=new CustomerDAOImpl();
-    JobDAO jobDAO=new JobDAOImpl();
-
-
+    CustomerDAO customerDAO= (CustomerDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.CUSTOMER);
+    JobDAO jobDAO=(JobDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.JOB);
 
     public String getNextJobId() throws SQLException, ClassNotFoundException {
         return jobDAO.getNextJobId();

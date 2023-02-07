@@ -1,7 +1,10 @@
 package lk.ijse.asms.bo.custom.impl;
 
+import com.sun.org.apache.bcel.internal.generic.FADD;
 import javafx.collections.ObservableList;
+import jdk.nashorn.internal.scripts.JO;
 import lk.ijse.asms.bo.custom.FinishJobBO;
+import lk.ijse.asms.dao.DAOFactory;
 import lk.ijse.asms.dao.custom.JobDAO;
 import lk.ijse.asms.dao.custom.PaymentPlaneDAO;
 import lk.ijse.asms.dao.custom.QueryDAO;
@@ -22,10 +25,10 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class FinishJobBOImpl implements FinishJobBO {
-    SubcPaymentDAO paymentDAO=new SubcPaymentDAOImpl();
-    JobDAO jobDAO=new JobDAOImpl();
-    QueryDAO queryDAO=new QueryDAOImpl();
-    PaymentPlaneDAO paymentPlaneDAO=new PaymentPlaneDAOImpl();
+    SubcPaymentDAO paymentDAO=(SubcPaymentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.SUBCPAYMENT);
+    JobDAO jobDAO=(JobDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.JOB);
+    QueryDAO queryDAO=(QueryDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.QUERY);
+    PaymentPlaneDAO paymentPlaneDAO=(PaymentPlaneDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PAYMENTPLANE);
 
     public ObservableList<String> getFinishJob(String jobStatus) throws SQLException, ClassNotFoundException {
         return queryDAO.getFinishJob(jobStatus);
