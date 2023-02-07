@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.asms.bo.BOFactory;
 import lk.ijse.asms.bo.custom.VehicleBO;
 import lk.ijse.asms.bo.custom.impl.VehicleBOImpl;
 import lk.ijse.asms.dao.custom.VehicleDAO;
@@ -18,7 +19,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class AddVehicleFormController {
-    VehicleBO vehicleBO=new VehicleBOImpl();
+    VehicleBO vehicleBO=(VehicleBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.VEHICLE);
 
     public AnchorPane vehicleManagePane;
     public JFXTextField txtRegNo;

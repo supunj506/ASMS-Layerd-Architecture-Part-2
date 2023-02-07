@@ -4,7 +4,9 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.asms.bo.BOFactory;
 import lk.ijse.asms.bo.custom.JobReportBO;
+import lk.ijse.asms.bo.custom.PaymentReportBO;
 import lk.ijse.asms.bo.custom.impl.JobReportBOImpl;
 import lk.ijse.asms.dto.CustomerDTO;
 import lk.ijse.asms.dto.JobDTO;
@@ -19,7 +21,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 
 public class JobReportFormController {
-    JobReportBO jobReportBO=new JobReportBOImpl();
+    JobReportBO jobReportBO=(JobReportBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.JOBREPORT);
 
     public AnchorPane jobReportPane;
     public JFXComboBox<String> cmbJob;

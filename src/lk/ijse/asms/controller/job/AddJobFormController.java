@@ -9,6 +9,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.asms.bo.BOFactory;
 import lk.ijse.asms.bo.custom.AddJobBO;
 import lk.ijse.asms.bo.custom.impl.AddJobBOImpl;
 import lk.ijse.asms.dto.CustomerDTO;
@@ -24,7 +25,7 @@ import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 public class AddJobFormController {
-    AddJobBO addJobBO=new AddJobBOImpl();
+    AddJobBO addJobBO=(AddJobBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ADDJOB);
 
     public AnchorPane addJobPane;
     public JFXRadioButton radioNew;

@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.asms.bo.BOFactory;
 import lk.ijse.asms.bo.custom.PaymentReportBO;
 import lk.ijse.asms.bo.custom.impl.PaymentReportBOImpl;
 import lk.ijse.asms.dao.custom.*;
@@ -26,7 +27,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class PaymentReportFormController {
-    PaymentReportBO paymentReportBO=new PaymentReportBOImpl();
+    PaymentReportBO paymentReportBO=(PaymentReportBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PAYMENTREPORT);
 
     public AnchorPane contractPaymentPane;
     public JFXComboBox <String>cmbJob;

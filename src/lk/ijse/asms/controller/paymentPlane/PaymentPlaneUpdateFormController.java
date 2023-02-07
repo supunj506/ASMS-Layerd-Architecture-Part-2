@@ -13,6 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.asms.bo.BOFactory;
 import lk.ijse.asms.bo.custom.PaymentPlaneBO;
 import lk.ijse.asms.bo.custom.impl.PaymentPlaneBOImpl;
 import lk.ijse.asms.dao.custom.PaymentPlaneDAO;
@@ -31,7 +32,7 @@ import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 public class PaymentPlaneUpdateFormController {
-    PaymentPlaneBO paymentPlaneBO=new PaymentPlaneBOImpl();
+    PaymentPlaneBO paymentPlaneBO=(PaymentPlaneBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PAYMENTPLANE);
 
     public AnchorPane paymentPlaneUpdatePane;
     public JFXTextField txtDescription;

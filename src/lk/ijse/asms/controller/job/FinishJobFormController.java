@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.asms.bo.BOFactory;
 import lk.ijse.asms.bo.custom.FinishJobBO;
 import lk.ijse.asms.bo.custom.impl.FinishJobBOImpl;
 import lk.ijse.asms.dto.SubPaymentDTO;
@@ -21,7 +22,7 @@ import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 public class FinishJobFormController {
-    FinishJobBO finishJobBOImpl =new FinishJobBOImpl();
+    FinishJobBO finishJobBOImpl =(FinishJobBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.FINISHJOB);
 
     public AnchorPane finishJobPane;
     public JFXComboBox<String> cmbJob;

@@ -10,6 +10,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.asms.bo.BOFactory;
 import lk.ijse.asms.bo.custom.EmployeeBO;
 import lk.ijse.asms.bo.custom.impl.EmployeeBOImpl;
 import lk.ijse.asms.dao.custom.EmployeeDAO;
@@ -26,7 +27,7 @@ import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 public class AddEmployeeFormController {
-    EmployeeBO employeeBO=new EmployeeBOImpl();
+    EmployeeBO employeeBO=(EmployeeBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.EMPLOYEE);
 
     public JFXTextField txtNic;
     public JFXTextField txtName;

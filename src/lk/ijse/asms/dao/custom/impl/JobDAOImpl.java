@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class JobDAOImpl implements JobDAO {
+
     @Override
     public String getNextJobId() throws SQLException, ClassNotFoundException {
         ResultSet rst= SQLUtil.execute("SELECT id FROM job ORDER BY id DESC LIMIT 1");

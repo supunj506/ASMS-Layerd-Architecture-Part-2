@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.asms.bo.BOFactory;
 import lk.ijse.asms.bo.custom.CustomerBO;
 import lk.ijse.asms.bo.custom.impl.CustomerBOImpl;
 import lk.ijse.asms.dao.DAOFactory;
@@ -20,8 +21,7 @@ import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 public class AddCustomerFormController {
-    CustomerBO customerBO=new CustomerBOImpl();
-
+    CustomerBO customerBO=(CustomerBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.CUSTOMER);
 
     public AnchorPane addCustomerPane;
     public JFXTextField txtCusName;
