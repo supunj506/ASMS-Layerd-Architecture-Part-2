@@ -64,6 +64,19 @@ public class CustomEntity implements SuperEntity {
     public CustomEntity() {
     }
 
+    public CustomEntity(String employee_id, String employee_name,String division_type) {
+        this.employee_id = employee_id;
+        this.employee_name = employee_name;
+        this.division_type = division_type;
+    }
+
+    public CustomEntity(String employee_id, int job_data_point_count,int job_power_point_count, int job_camera_point_count) {
+        this.employee_id = employee_id;
+        this.job_data_point_count = job_data_point_count;
+        this.job_power_point_count = job_power_point_count;
+        this.job_camera_point_count = job_camera_point_count;
+    }
+
     public CustomEntity(String customer_id, String customer_name, String customer_address, String customer_email, String customer_contact, String customer_it_manager_name, String customer_it_manager_contact, String division_id, String division_type, String employee_id, String employee_nic, String employee_name, String employee_gender, LocalDate employee_dob, String employee_address, String employee_email, String employee_contact, String employee_type, String employee_division, LocalDate employee_joinDate, String team_id, String job_id, String job_type, LocalDate job_dude_date, int job_table_count, String vehicle_id, LocalDate job_start_date, LocalDate job_end_date, String job_location, String job_status, int job_power_point_count, int job_data_point_count, int job_camera_point_count, String job_done_by, String payment_plane_id, String payment_plane_name, String payment_plane_description, double payment_plane_unite_price, String sub_payment_id, double sub_payment_total_amount, LocalDate sub_payment_pay_date, String sub_payment_pay_status, String user_id, String user_password, String vehicle_reg_no, String vehicle_type, String vehicle_colour, String vehicle_fuel_type, String vehicle_brand) {
         this.customer_id = customer_id;
         this.customer_name = customer_name;

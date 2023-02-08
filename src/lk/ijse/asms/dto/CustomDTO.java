@@ -63,9 +63,9 @@ public class CustomDTO {
     }
 
     public CustomDTO( String employeeId, String employeeName,String divisionType) {
-        DivisionType = divisionType;
         this.employeeId = employeeId;
         this.employeeName = employeeName;
+        this.DivisionType = divisionType;
     }
 
     public CustomDTO(String employeeId, int dataPoint, int powerPoint, int cameraPoint) {

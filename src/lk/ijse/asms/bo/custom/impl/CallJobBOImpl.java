@@ -1,11 +1,14 @@
 package lk.ijse.asms.bo.custom.impl;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lk.ijse.asms.bo.custom.CallJobBO;
 import lk.ijse.asms.dao.util.DAOFactory;
 import lk.ijse.asms.dao.custom.*;
 import lk.ijse.asms.db.DBConnection;
 import lk.ijse.asms.dto.CustomDTO;
+import lk.ijse.asms.dto.CustomerDTO;
 import lk.ijse.asms.dto.JobDTO;
+import lk.ijse.asms.entity.CustomEntity;
 import lk.ijse.asms.entity.EmployeeTeam;
 import lk.ijse.asms.entity.Job;
 import lk.ijse.asms.entity.Team;
@@ -66,6 +69,10 @@ public class CallJobBOImpl implements CallJobBO {
     }
 
     public ObservableList<CustomDTO> getEmployeeDetails(String jobType) throws SQLException, ClassNotFoundException {
-        return queryDAO.getEmployeeDetails(jobType);
+        ObservableList<CustomDTO>employeeDetail= FXCollections.observableArrayList();
+        for(CustomEntity customEntity:queryDAO.getEmployeeDetails(jobType)){
+            employeeDetail.add(new CustomDTO(customEntity.getEmployee_id(),customEntity.getEmployee_name(),customEntity.getEmployee_type()));
+        }
+        return employeeDetail;
     }
 }

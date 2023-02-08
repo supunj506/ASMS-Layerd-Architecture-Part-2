@@ -11,6 +11,7 @@ import lk.ijse.asms.dao.util.PaymentPlaneType;
 import lk.ijse.asms.db.DBConnection;
 import lk.ijse.asms.dto.CustomDTO;
 import lk.ijse.asms.dto.SubPaymentDTO;
+import lk.ijse.asms.entity.CustomEntity;
 import lk.ijse.asms.entity.Job;
 import lk.ijse.asms.entity.PaymentPlane;
 import lk.ijse.asms.entity.SubPayment;
@@ -56,14 +57,14 @@ public class FinishJobBOImpl implements FinishJobBO {
             Job jobEntity1 = jobDAO.getJobById(jobId);
                 if (jobEntity1.getJob_done_by().equals("SUB CONTRACT")) {
                     String payId = paymentDAO.getNextId();
-                    CustomDTO customDTO = queryDAO.getDetailForSubPayment(jobId);
+                    CustomEntity detailForSubPayment = queryDAO.getDetailForSubPayment(jobId);
                     SubPayment subPaymentEntity1 = new SubPayment(
                             payId,
-                            customDTO.getEmployeeId(),
+                            detailForSubPayment.getEmployee_id(),
                             jobId,
-                            customDTO.getDataPoint(),
-                            customDTO.getPowerPoint(),
-                            customDTO.getCameraPoint(),
+                            detailForSubPayment.getJob_data_point_count(),
+                            detailForSubPayment.getJob_power_point_count(),
+                            detailForSubPayment.getJob_camera_point_count(),
                             total,
                             "REMINNING"
                     );
