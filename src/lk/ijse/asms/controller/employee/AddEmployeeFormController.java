@@ -27,7 +27,7 @@ import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 public class AddEmployeeFormController {
-    EmployeeBO employeeBO=(EmployeeBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.EMPLOYEE);
+    private final EmployeeBO employeeBO=(EmployeeBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.EMPLOYEE);
 
     public JFXTextField txtNic;
     public JFXTextField txtName;

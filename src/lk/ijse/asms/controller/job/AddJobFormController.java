@@ -25,7 +25,7 @@ import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 public class AddJobFormController {
-    AddJobBO addJobBO=(AddJobBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ADDJOB);
+    private final AddJobBO addJobBO=(AddJobBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ADDJOB);
 
     public AnchorPane addJobPane;
     public JFXRadioButton radioNew;

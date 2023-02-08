@@ -22,7 +22,7 @@ import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 public class UpdateEmployeeFormController {
-    EmployeeBO employeeBO=(EmployeeBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.EMPLOYEE);
+    private final EmployeeBO employeeBO=(EmployeeBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.EMPLOYEE);
 
     public AnchorPane updateEmployeePane;
     public JFXTextField txtId;

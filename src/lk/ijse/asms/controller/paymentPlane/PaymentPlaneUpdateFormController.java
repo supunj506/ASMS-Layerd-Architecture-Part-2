@@ -32,7 +32,7 @@ import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 public class PaymentPlaneUpdateFormController {
-    PaymentPlaneBO paymentPlaneBO=(PaymentPlaneBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PAYMENTPLANE);
+    private final PaymentPlaneBO paymentPlaneBO=(PaymentPlaneBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PAYMENTPLANE);
 
     public AnchorPane paymentPlaneUpdatePane;
     public JFXTextField txtDescription;

@@ -27,7 +27,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class PaymentReportFormController {
-    PaymentReportBO paymentReportBO=(PaymentReportBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PAYMENTREPORT);
+    private final PaymentReportBO paymentReportBO=(PaymentReportBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PAYMENTREPORT);
 
     public AnchorPane contractPaymentPane;
     public JFXComboBox <String>cmbJob;

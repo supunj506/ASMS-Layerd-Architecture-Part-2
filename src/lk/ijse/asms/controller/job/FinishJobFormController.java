@@ -22,7 +22,7 @@ import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 public class FinishJobFormController {
-    FinishJobBO finishJobBOImpl =(FinishJobBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.FINISHJOB);
+    private final FinishJobBO finishJobBOImpl =(FinishJobBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.FINISHJOB);
 
     public AnchorPane finishJobPane;
     public JFXComboBox<String> cmbJob;

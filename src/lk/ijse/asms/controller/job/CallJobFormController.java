@@ -24,7 +24,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class CallJobFormController {
-    CallJobBO callJobBO=(CallJobBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.CALLJOB);
+    private final CallJobBO callJobBO=(CallJobBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.CALLJOB);
 
     public AnchorPane callJobPane;
     public JFXComboBox <String>cmbEmployee;

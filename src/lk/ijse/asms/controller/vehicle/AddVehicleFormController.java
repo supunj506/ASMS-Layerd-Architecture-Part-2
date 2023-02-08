@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class AddVehicleFormController {
-    VehicleBO vehicleBO=(VehicleBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.VEHICLE);
+    private final VehicleBO vehicleBO=(VehicleBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.VEHICLE);
 
     public AnchorPane vehicleManagePane;
     public JFXTextField txtRegNo;

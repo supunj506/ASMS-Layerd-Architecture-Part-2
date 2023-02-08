@@ -16,11 +16,11 @@ import java.util.ArrayList;
 
 public class CallJobBOImpl implements CallJobBO {
 
-    VehicleDAO vehicleDAO=(VehicleDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.VEHICLE);
-    JobDAO jobDAO=(JobDAO)DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.JOB);
-    TeamDAO teamDAO=(TeamDAO)DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.TEAM);
-    EmpTeamDAO empTeamDAO=(EmpTeamDAO)DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.EMPTEAM);
-    QueryDAO queryDAO=(QueryDAO)DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.QUERY);
+    private final VehicleDAO vehicleDAO=(VehicleDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.VEHICLE);
+    private final JobDAO jobDAO=(JobDAO)DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.JOB);
+    private final TeamDAO teamDAO=(TeamDAO)DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.TEAM);
+    private final EmpTeamDAO empTeamDAO=(EmpTeamDAO)DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.EMPTEAM);
+    private final QueryDAO queryDAO=(QueryDAO)DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.QUERY);
 
     public boolean callJob(JobDTO jobDTO, ObservableList<TeamTM>list) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();

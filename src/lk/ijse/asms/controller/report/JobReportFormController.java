@@ -21,7 +21,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 
 public class JobReportFormController {
-    JobReportBO jobReportBO=(JobReportBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.JOBREPORT);
+    private final JobReportBO jobReportBO=(JobReportBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.JOBREPORT);
 
     public AnchorPane jobReportPane;
     public JFXComboBox<String> cmbJob;
