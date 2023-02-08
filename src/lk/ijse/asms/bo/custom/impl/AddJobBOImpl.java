@@ -1,7 +1,7 @@
 package lk.ijse.asms.bo.custom.impl;
 
 import lk.ijse.asms.bo.custom.AddJobBO;
-import lk.ijse.asms.dao.DAOFactory;
+import lk.ijse.asms.dao.util.DAOFactory;
 import lk.ijse.asms.dao.custom.CustomerDAO;
 import lk.ijse.asms.dao.custom.JobDAO;
 import lk.ijse.asms.dto.CustomerDTO;
@@ -23,13 +23,13 @@ public class AddJobBOImpl implements AddJobBO {
     public CustomerDTO getCustomerByName(String customerName) throws SQLException, ClassNotFoundException {
         Customer customerByName = customerDAO.getCustomerByName(customerName);
         return new CustomerDTO(
-                customerByName.getId(),
-                customerByName.getName(),
-                customerByName.getAddress(),
-                customerByName.getEmail(),
-                customerByName.getContact(),
-                customerByName.getIt_manager_name(),
-                customerByName.getIt_manager_contact());
+                customerByName.getCustomer_id(),
+                customerByName.getCustomer_name(),
+                customerByName.getCustomer_address(),
+                customerByName.getCustomer_email(),
+                customerByName.getCustomer_contact(),
+                customerByName.getCustomer_it_manager_name(),
+                customerByName.getCustomer_it_manager_contact());
     }
 
     public boolean addJob(JobDTO jobDTO) throws SQLException, ClassNotFoundException {
@@ -41,13 +41,13 @@ public class AddJobBOImpl implements AddJobBO {
         ArrayList<CustomerDTO> allCustomerDTO=new ArrayList<>();
             for (Customer customer : allCustomer) {
                 allCustomerDTO.add(new CustomerDTO(
-                        customer.getId(),
-                        customer.getName(),
-                        customer.getAddress(),
-                        customer.getEmail(),
-                        customer.getContact(),
-                        customer.getIt_manager_name(),
-                        customer.getIt_manager_contact()));
+                        customer.getCustomer_id(),
+                        customer.getCustomer_name(),
+                        customer.getCustomer_address(),
+                        customer.getCustomer_email(),
+                        customer.getCustomer_contact(),
+                        customer.getCustomer_it_manager_name(),
+                        customer.getCustomer_it_manager_contact()));
             }
         return allCustomerDTO;
     }

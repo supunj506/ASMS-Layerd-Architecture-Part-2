@@ -1,30 +1,29 @@
 package lk.ijse.asms.dao.custom.impl;
-import lk.ijse.asms.dao.custom.SubcPaymentDAO;
-import lk.ijse.asms.dto.SubPaymentDTO;
-import lk.ijse.asms.dao.SQLUtil;
+import lk.ijse.asms.dao.custom.SubPaymentDAO;
+import lk.ijse.asms.dao.util.SQLUtil;
 import lk.ijse.asms.entity.SubPayment;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-public class SubcPaymentDAOImpl implements SubcPaymentDAO {
+public class SubPaymentDAOImpl implements SubPaymentDAO {
     @Override
     public boolean saveSubCPayment(SubPayment subPaymentEntity) throws SQLException, ClassNotFoundException {
-       return SQLUtil.execute("insert into subc_payment (id,emp_id,job_id,data_point,power_point,camera_point,total_amount,pay_status) values (?,?,?,?,?,?,?,?)",
-               subPaymentEntity.getId(),
-               subPaymentEntity.getEmp_id(),
+       return SQLUtil.execute("insert into SubPayment (sub_payment_id ,employee_id ,job_id,job_power_point_count ,job_data_point_count ,job_camera_point_count ,sub_payment_total_amount ,sub_payment_pay_status ) values (?,?,?,?,?,?,?,?)",
+               subPaymentEntity.getSub_payment_id(),
+               subPaymentEntity.getEmployee_id(),
                subPaymentEntity.getJob_id(),
-               subPaymentEntity.getData_point(),
-               subPaymentEntity.getPower_point(),
-               subPaymentEntity.getCamera_point(),
-               subPaymentEntity.getTotal_amount(),
-               subPaymentEntity.getPay_status());
+               subPaymentEntity.getJob_power_point_count(),
+               subPaymentEntity.getJob_data_point_count(),
+               subPaymentEntity.getJob_camera_point_count(),
+               subPaymentEntity.getSub_payment_total_amount(),
+               subPaymentEntity.getSub_payment_pay_status());
 
     }
     @Override
         public String getNextId () throws SQLException, ClassNotFoundException {
-            ResultSet rst = SQLUtil.execute("SELECT id FROM subc_payment ORDER BY id DESC LIMIT 1");
+            ResultSet rst = SQLUtil.execute("SELECT sub_payment_id  FROM SubPayment ORDER BY sub_payment_id  DESC LIMIT 1");
             if (rst.next()) {
                 String payId=(rst.getString(1));
                 String []ids= payId.split("Sub");
@@ -41,7 +40,7 @@ public class SubcPaymentDAOImpl implements SubcPaymentDAO {
 
     @Override
     public SubPayment getSubPaymentById(String id) throws SQLException, ClassNotFoundException {
-        ResultSet rst=SQLUtil.execute("select * from subc_payment where id=?",id);
+        ResultSet rst=SQLUtil.execute("select * from SubPayment where sub_payment_id =?",id);
         if(rst.next()){
             return new SubPayment(
                     rst.getString(1),
@@ -51,7 +50,7 @@ public class SubcPaymentDAOImpl implements SubcPaymentDAO {
                     rst.getInt(5),
                     rst.getInt(6),
                     rst.getDouble(7),
-                    LocalDate.parse(rst.getString(8)),
+                    LocalDate.now(),
                     rst.getString(9));
         }
         return null;

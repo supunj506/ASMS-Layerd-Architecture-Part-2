@@ -1,5 +1,6 @@
-package lk.ijse.asms.dao;
+package lk.ijse.asms.dao.util;
 
+import lk.ijse.asms.dao.SuperDAO;
 import lk.ijse.asms.dao.custom.impl.*;
 
 public class DAOFactory {
@@ -27,7 +28,7 @@ public class DAOFactory {
             case EMPLOYEE:
                 return new EmployeeDAOImpl();
             case EMPTEAM:
-                return new EmpTeamDAOImpl();
+                return new EmployeeTeamDAOImpl();
             case JOB:
                 return new JobDAOImpl();
             case PAYMENTPLANE:
@@ -35,7 +36,7 @@ public class DAOFactory {
             case QUERY:
                 return new QueryDAOImpl();
             case SUBCPAYMENT:
-                return new SubcPaymentDAOImpl();
+                return new SubPaymentDAOImpl();
             case TEAM:
                 return new TeamDAOImpl();
             case USER:

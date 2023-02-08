@@ -1,30 +1,30 @@
 package lk.ijse.asms.entity;
 
-public class Team {
-    private String id;
-    private String jobId;
+public class Team implements SuperEntity{
+    private String team_id;
+    private String job_id;
 
     public Team() {
     }
 
-    public Team(String id, String jobId) {
-        this.id = id;
-        this.jobId = jobId;
+    public Team(String team_id, String job_id) {
+        this.team_id = team_id;
+        this.job_id = job_id;
     }
 
-    public String getId() {
-        return id;
+    public String getTeam_id() {
+        return team_id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setTeam_id(String team_id) {
+        this.team_id = team_id;
     }
 
-    public String getJobId() {
-        return jobId;
+    public String getJob_id() {
+        return job_id;
     }
 
-    public void setJobId(String jobId) {
-        this.jobId = jobId;
+    public void setJob_id(String job_id) {
+        this.job_id = job_id;
     }
 }

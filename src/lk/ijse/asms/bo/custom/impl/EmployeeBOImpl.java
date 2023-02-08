@@ -3,9 +3,8 @@ package lk.ijse.asms.bo.custom.impl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lk.ijse.asms.bo.custom.EmployeeBO;
-import lk.ijse.asms.dao.DAOFactory;
+import lk.ijse.asms.dao.util.DAOFactory;
 import lk.ijse.asms.dao.custom.EmployeeDAO;
-import lk.ijse.asms.dao.custom.impl.EmployeeDAOImpl;
 import lk.ijse.asms.dto.EmployeeDTO;
 import lk.ijse.asms.entity.Employee;
 
@@ -27,7 +26,7 @@ public class EmployeeBOImpl implements EmployeeBO {
         ArrayList<Employee> allEmployeeNics = employeeDAO.getAllEmployee();
         ObservableList<String> allEmployeeNic= FXCollections.observableArrayList();
         for (Employee employee : allEmployeeNics) {
-            allEmployeeNic.add(employee.getNic());
+            allEmployeeNic.add(employee.getEmployee_nic());
         }
         return allEmployeeNic;
     }
@@ -57,16 +56,16 @@ public class EmployeeBOImpl implements EmployeeBO {
 
     public EmployeeDTO convertToDTO(Employee employee){
         return new EmployeeDTO(
-                employee.getId(),
-                employee.getNic(),
-                employee.getName(),
-                employee.getGender(),
-                employee.getDob(),
-                employee.getAddress(),
-                employee.getEmail(),
-                employee.getContact(),
-                employee.getEmpType(),
-                employee.getDivision(),
-                employee.getJoinDate());
+                employee.getEmployee_id(),
+                employee.getEmployee_nic(),
+                employee.getEmployee_name(),
+                employee.getEmployee_gender(),
+                employee.getEmployee_dob(),
+                employee.getEmployee_address(),
+                employee.getEmployee_email(),
+                employee.getEmployee_contact(),
+                employee.getEmployee_type(),
+                employee.getEmployee_division(),
+                employee.getEmployee_joinDate());
     }
 }

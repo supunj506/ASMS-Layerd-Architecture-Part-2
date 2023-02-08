@@ -2,57 +2,57 @@ package lk.ijse.asms.entity;
 
 import java.time.LocalDate;
 
-public class SubPayment {
-    private String id;
-    private String emp_id;
+public class SubPayment implements SuperEntity{
+    private String sub_payment_id;
+    private String employee_id;
     private String job_id;
-    private int data_point;
-    private int power_point;
-    private int camera_point;
-    private double total_amount;
-    private LocalDate pay_date;
-    private String pay_status;
+    private int job_power_point_count;
+    private int job_data_point_count;
+    private int job_camera_point_count;
+    private double sub_payment_total_amount;
+    private LocalDate sub_payment_pay_date;
+    private String sub_payment_pay_status;
 
     public SubPayment() {
     }
 
-    public SubPayment(String id, String emp_id, String job_id, int data_point, int power_point, int camera_point, double total_amount, LocalDate pay_date, String pay_status) {
-        this.id = id;
-        this.emp_id = emp_id;
+    public SubPayment(String sub_payment_id, String employee_id, String job_id, int job_power_point_count, int job_data_point_count, int job_camera_point_count, double sub_payment_total_amount, LocalDate sub_payment_pay_date, String sub_payment_pay_status) {
+        this.sub_payment_id = sub_payment_id;
+        this.employee_id = employee_id;
         this.job_id = job_id;
-        this.data_point = data_point;
-        this.power_point = power_point;
-        this.camera_point = camera_point;
-        this.total_amount = total_amount;
-        this.pay_date = pay_date;
-        this.pay_status = pay_status;
+        this.job_power_point_count = job_power_point_count;
+        this.job_data_point_count = job_data_point_count;
+        this.job_camera_point_count = job_camera_point_count;
+        this.sub_payment_total_amount = sub_payment_total_amount;
+        this.sub_payment_pay_date = sub_payment_pay_date;
+        this.sub_payment_pay_status = sub_payment_pay_status;
     }
 
-    public SubPayment(String id, String emp_id, String job_id, int data_point, int power_point, int camera_point, double total_amount, String pay_status) {
-        this.id = id;
-        this.emp_id = emp_id;
+    public SubPayment(String sub_payment_id, String employee_id, String job_id, int job_power_point_count, int job_data_point_count, int job_camera_point_count, double sub_payment_total_amount, String sub_payment_pay_status) {
+        this.sub_payment_id = sub_payment_id;
+        this.employee_id = employee_id;
         this.job_id = job_id;
-        this.data_point = data_point;
-        this.power_point = power_point;
-        this.camera_point = camera_point;
-        this.total_amount = total_amount;
-        this.pay_status = pay_status;
+        this.job_power_point_count = job_power_point_count;
+        this.job_data_point_count = job_data_point_count;
+        this.job_camera_point_count = job_camera_point_count;
+        this.sub_payment_total_amount = sub_payment_total_amount;
+        this.sub_payment_pay_status = sub_payment_pay_status;
     }
 
-    public String getId() {
-        return id;
+    public String getSub_payment_id() {
+        return sub_payment_id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setSub_payment_id(String sub_payment_id) {
+        this.sub_payment_id = sub_payment_id;
     }
 
-    public String getEmp_id() {
-        return emp_id;
+    public String getEmployee_id() {
+        return employee_id;
     }
 
-    public void setEmp_id(String emp_id) {
-        this.emp_id = emp_id;
+    public void setEmployee_id(String employee_id) {
+        this.employee_id = employee_id;
     }
 
     public String getJob_id() {
@@ -63,51 +63,51 @@ public class SubPayment {
         this.job_id = job_id;
     }
 
-    public int getData_point() {
-        return data_point;
+    public int getJob_power_point_count() {
+        return job_power_point_count;
     }
 
-    public void setData_point(int data_point) {
-        this.data_point = data_point;
+    public void setJob_power_point_count(int job_power_point_count) {
+        this.job_power_point_count = job_power_point_count;
     }
 
-    public int getPower_point() {
-        return power_point;
+    public int getJob_data_point_count() {
+        return job_data_point_count;
     }
 
-    public void setPower_point(int power_point) {
-        this.power_point = power_point;
+    public void setJob_data_point_count(int job_data_point_count) {
+        this.job_data_point_count = job_data_point_count;
     }
 
-    public int getCamera_point() {
-        return camera_point;
+    public int getJob_camera_point_count() {
+        return job_camera_point_count;
     }
 
-    public void setCamera_point(int camera_point) {
-        this.camera_point = camera_point;
+    public void setJob_camera_point_count(int job_camera_point_count) {
+        this.job_camera_point_count = job_camera_point_count;
     }
 
-    public double getTotal_amount() {
-        return total_amount;
+    public double getSub_payment_total_amount() {
+        return sub_payment_total_amount;
     }
 
-    public void setTotal_amount(double total_amount) {
-        this.total_amount = total_amount;
+    public void setSub_payment_total_amount(double sub_payment_total_amount) {
+        this.sub_payment_total_amount = sub_payment_total_amount;
     }
 
-    public LocalDate getPay_date() {
-        return pay_date;
+    public LocalDate getSub_payment_pay_date() {
+        return sub_payment_pay_date;
     }
 
-    public void setPay_date(LocalDate pay_date) {
-        this.pay_date = pay_date;
+    public void setSub_payment_pay_date(LocalDate sub_payment_pay_date) {
+        this.sub_payment_pay_date = sub_payment_pay_date;
     }
 
-    public String getPay_status() {
-        return pay_status;
+    public String getSub_payment_pay_status() {
+        return sub_payment_pay_status;
     }
 
-    public void setPay_status(String pay_status) {
-        this.pay_status = pay_status;
+    public void setSub_payment_pay_status(String sub_payment_pay_status) {
+        this.sub_payment_pay_status = sub_payment_pay_status;
     }
 }

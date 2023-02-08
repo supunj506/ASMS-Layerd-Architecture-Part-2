@@ -2,175 +2,175 @@ package lk.ijse.asms.entity;
 
 import java.time.LocalDate;
 
-public class Job {
-    private String id;
-    private String type;
-    private String cusId;
-    private LocalDate dudeDate;
-    private int tableCount;
-    private String vehicleId;
-    private LocalDate startDate;
-    private LocalDate endDate;
-    private String location;
-    private String jobStatus;
-    private int powerPoint;
-    private int dataPoint;
-    private int cameraPoint;
-    private String doneBy;
+public class Job implements SuperEntity{
+    private String job_id;
+    private String job_type;
+    private String customer_id;
+    private LocalDate job_dude_date;
+    private int job_table_count;
+    private String vehicle_id;
+    private LocalDate job_start_date;
+    private LocalDate job_end_date;
+    private String job_location;
+    private String job_status;
+    private int job_power_point_count;
+    private int job_data_point_count;
+    private int job_camera_point_count;
+    private String job_done_by;
 
     public Job() {
     }
-    public Job(String id, String type, String cusId, LocalDate dudeDate, int tableCount, String location, String jobStatus) {
-        this.id = id;
-        this.type = type;
-        this.cusId = cusId;
-        this.dudeDate = dudeDate;
-        this.tableCount = tableCount;
-        this.location = location;
-        this.jobStatus = jobStatus;
+    public Job(String job_id, String job_type, String customer_id, LocalDate job_dude_date, int job_table_count, String job_location, String job_status) {
+        this.job_id = job_id;
+        this.job_type = job_type;
+        this.customer_id = customer_id;
+        this.job_dude_date = job_dude_date;
+        this.job_table_count = job_table_count;
+        this.job_location = job_location;
+        this.job_status = job_status;
     }
-    public Job(String id, String vehicleId, LocalDate startDate, String jobStatus, String doneBy) {
-        this.id=id;
-        this.vehicleId = vehicleId;
-        this.startDate = startDate;
-        this.jobStatus = jobStatus;
-        this.doneBy = doneBy;
+    public Job(String job_id, String vehicle_id, LocalDate job_start_date, String job_status, String job_done_by) {
+        this.job_id = job_id;
+        this.vehicle_id = vehicle_id;
+        this.job_start_date = job_start_date;
+        this.job_status = job_status;
+        this.job_done_by = job_done_by;
     }
-    public Job(String id, LocalDate endDate, String jobStatus, int powerPoint, int dataPoint, int cameraPoint) {
-        this.id=id;
-        this.endDate = endDate;
-        this.jobStatus = jobStatus;
-        this.powerPoint = powerPoint;
-        this.dataPoint = dataPoint;
-        this.cameraPoint = cameraPoint;
-    }
-
-    public Job(String id, String type, String cusId, LocalDate dudeDate, int tableCount, String vehicleId, LocalDate startDate, LocalDate endDate, String location, String jobStatus, int powerPoint, int dataPoint, int cameraPoint, String doneBy) {
-        this.id = id;
-        this.type = type;
-        this.cusId = cusId;
-        this.dudeDate = dudeDate;
-        this.tableCount = tableCount;
-        this.vehicleId = vehicleId;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.location = location;
-        this.jobStatus = jobStatus;
-        this.powerPoint = powerPoint;
-        this.dataPoint = dataPoint;
-        this.cameraPoint = cameraPoint;
-        this.doneBy = doneBy;
+    public Job(String job_id, LocalDate job_end_date, String job_status, int job_power_point_count, int job_data_point_count, int job_camera_point_count) {
+        this.job_id = job_id;
+        this.job_end_date = job_end_date;
+        this.job_status = job_status;
+        this.job_power_point_count = job_power_point_count;
+        this.job_data_point_count = job_data_point_count;
+        this.job_camera_point_count = job_camera_point_count;
     }
 
-    public String getId() {
-        return id;
+    public Job(String job_id, String job_type, String customer_id, LocalDate job_dude_date, int job_table_count, String vehicle_id, LocalDate job_start_date, LocalDate job_end_date, String job_location, String job_status, int job_power_point_count, int job_data_point_count, int job_camera_point_count, String job_done_by) {
+        this.job_id = job_id;
+        this.job_type = job_type;
+        this.customer_id = customer_id;
+        this.job_dude_date = job_dude_date;
+        this.job_table_count = job_table_count;
+        this.vehicle_id = vehicle_id;
+        this.job_start_date = job_start_date;
+        this.job_end_date = job_end_date;
+        this.job_location = job_location;
+        this.job_status = job_status;
+        this.job_power_point_count = job_power_point_count;
+        this.job_data_point_count = job_data_point_count;
+        this.job_camera_point_count = job_camera_point_count;
+        this.job_done_by = job_done_by;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getJob_id() {
+        return job_id;
     }
 
-    public String getType() {
-        return type;
+    public void setJob_id(String job_id) {
+        this.job_id = job_id;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public String getJob_type() {
+        return job_type;
     }
 
-    public String getCusId() {
-        return cusId;
+    public void setJob_type(String job_type) {
+        this.job_type = job_type;
     }
 
-    public void setCusId(String cusId) {
-        this.cusId = cusId;
+    public String getCustomer_id() {
+        return customer_id;
     }
 
-    public LocalDate getDudeDate() {
-        return dudeDate;
+    public void setCustomer_id(String customer_id) {
+        this.customer_id = customer_id;
     }
 
-    public void setDudeDate(LocalDate dudeDate) {
-        this.dudeDate = dudeDate;
+    public LocalDate getJob_dude_date() {
+        return job_dude_date;
     }
 
-    public int getTableCount() {
-        return tableCount;
+    public void setJob_dude_date(LocalDate job_dude_date) {
+        this.job_dude_date = job_dude_date;
     }
 
-    public void setTableCount(int tableCount) {
-        this.tableCount = tableCount;
+    public int getJob_table_count() {
+        return job_table_count;
     }
 
-    public String getVehicleId() {
-        return vehicleId;
+    public void setJob_table_count(int job_table_count) {
+        this.job_table_count = job_table_count;
     }
 
-    public void setVehicleId(String vehicleId) {
-        this.vehicleId = vehicleId;
+    public String getVehicle_id() {
+        return vehicle_id;
     }
 
-    public LocalDate getStartDate() {
-        return startDate;
+    public void setVehicle_id(String vehicle_id) {
+        this.vehicle_id = vehicle_id;
     }
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
+    public LocalDate getJob_start_date() {
+        return job_start_date;
     }
 
-    public LocalDate getEndDate() {
-        return endDate;
+    public void setJob_start_date(LocalDate job_start_date) {
+        this.job_start_date = job_start_date;
     }
 
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
+    public LocalDate getJob_end_date() {
+        return job_end_date;
     }
 
-    public String getLocation() {
-        return location;
+    public void setJob_end_date(LocalDate job_end_date) {
+        this.job_end_date = job_end_date;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public String getJob_location() {
+        return job_location;
     }
 
-    public String getJobStatus() {
-        return jobStatus;
+    public void setJob_location(String job_location) {
+        this.job_location = job_location;
     }
 
-    public void setJobStatus(String jobStatus) {
-        this.jobStatus = jobStatus;
+    public String getJob_status() {
+        return job_status;
     }
 
-    public int getPowerPoint() {
-        return powerPoint;
+    public void setJob_status(String job_status) {
+        this.job_status = job_status;
     }
 
-    public void setPowerPoint(int powerPoint) {
-        this.powerPoint = powerPoint;
+    public int getJob_power_point_count() {
+        return job_power_point_count;
     }
 
-    public int getDataPoint() {
-        return dataPoint;
+    public void setJob_power_point_count(int job_power_point_count) {
+        this.job_power_point_count = job_power_point_count;
     }
 
-    public void setDataPoint(int dataPoint) {
-        this.dataPoint = dataPoint;
+    public int getJob_data_point_count() {
+        return job_data_point_count;
     }
 
-    public int getCameraPoint() {
-        return cameraPoint;
+    public void setJob_data_point_count(int job_data_point_count) {
+        this.job_data_point_count = job_data_point_count;
     }
 
-    public void setCameraPoint(int cameraPoint) {
-        this.cameraPoint = cameraPoint;
+    public int getJob_camera_point_count() {
+        return job_camera_point_count;
     }
 
-    public String getDoneBy() {
-        return doneBy;
+    public void setJob_camera_point_count(int job_camera_point_count) {
+        this.job_camera_point_count = job_camera_point_count;
     }
 
-    public void setDoneBy(String doneBy) {
-        this.doneBy = doneBy;
+    public String getJob_done_by() {
+        return job_done_by;
+    }
+
+    public void setJob_done_by(String job_done_by) {
+        this.job_done_by = job_done_by;
     }
 }

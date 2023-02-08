@@ -1,23 +1,15 @@
 package lk.ijse.asms.bo.custom.impl;
 
-import com.sun.org.apache.bcel.internal.generic.FADD;
 import javafx.collections.ObservableList;
-import jdk.nashorn.internal.scripts.JO;
 import lk.ijse.asms.bo.custom.FinishJobBO;
-import lk.ijse.asms.dao.DAOFactory;
+import lk.ijse.asms.dao.util.DAOFactory;
 import lk.ijse.asms.dao.custom.JobDAO;
 import lk.ijse.asms.dao.custom.PaymentPlaneDAO;
 import lk.ijse.asms.dao.custom.QueryDAO;
-import lk.ijse.asms.dao.custom.SubcPaymentDAO;
-import lk.ijse.asms.dao.custom.impl.JobDAOImpl;
-import lk.ijse.asms.dao.custom.impl.PaymentPlaneDAOImpl;
-import lk.ijse.asms.dao.custom.impl.QueryDAOImpl;
-import lk.ijse.asms.dao.custom.impl.SubcPaymentDAOImpl;
+import lk.ijse.asms.dao.custom.SubPaymentDAO;
 import lk.ijse.asms.dao.util.PaymentPlaneType;
 import lk.ijse.asms.db.DBConnection;
 import lk.ijse.asms.dto.CustomDTO;
-import lk.ijse.asms.dto.JobDTO;
-import lk.ijse.asms.dto.PaymentPlaneDTO;
 import lk.ijse.asms.dto.SubPaymentDTO;
 import lk.ijse.asms.entity.Job;
 import lk.ijse.asms.entity.PaymentPlane;
@@ -28,7 +20,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class FinishJobBOImpl implements FinishJobBO {
-    private final SubcPaymentDAO paymentDAO=(SubcPaymentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.SUBCPAYMENT);
+    private final SubPaymentDAO paymentDAO=(SubPaymentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.SUBCPAYMENT);
     private final JobDAO jobDAO=(JobDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.JOB);
     private final QueryDAO queryDAO=(QueryDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.QUERY);
     private final PaymentPlaneDAO paymentPlaneDAO=(PaymentPlaneDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PAYMENTPLANE);
@@ -45,7 +37,7 @@ public class FinishJobBOImpl implements FinishJobBO {
         PaymentPlane data = paymentPlaneDAO.getPointDetails(PaymentPlaneType.DATA);
         PaymentPlane camera = paymentPlaneDAO.getPointDetails(PaymentPlaneType.CAMERA);
 
-        double total = subPaymentDTO.getPower_point() * power.getUnitPrice() + subPaymentDTO.getData_point()* data.getUnitPrice() + subPaymentDTO.getCamera_point()* camera.getUnitPrice();
+        double total = subPaymentDTO.getPower_point() * power.getPayment_plane_unite_price() + subPaymentDTO.getData_point()* data.getPayment_plane_unite_price() + subPaymentDTO.getCamera_point()* camera.getPayment_plane_unite_price();
 
         Job jobEntity =new Job(
                 jobId,
@@ -62,9 +54,9 @@ public class FinishJobBOImpl implements FinishJobBO {
             finishJob=true;
             connection.commit();
             Job jobEntity1 = jobDAO.getJobById(jobId);
-                if (jobEntity1.getDoneBy().equals("SUB CONTRACT")) {
+                if (jobEntity1.getJob_done_by().equals("SUB CONTRACT")) {
                     String payId = paymentDAO.getNextId();
-                    CustomDTO customDTO = queryDAO.getDetailForSubcPayment(jobId);
+                    CustomDTO customDTO = queryDAO.getDetailForSubPayment(jobId);
                     SubPayment subPaymentEntity1 = new SubPayment(
                             payId,
                             customDTO.getEmployeeId(),

@@ -1,4 +1,4 @@
-package lk.ijse.asms.dao;
+package lk.ijse.asms.dao.util;
 
 import lk.ijse.asms.db.DBConnection;
 

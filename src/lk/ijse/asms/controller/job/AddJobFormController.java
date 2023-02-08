@@ -9,9 +9,8 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.asms.bo.BOFactory;
+import lk.ijse.asms.bo.util.BOFactory;
 import lk.ijse.asms.bo.custom.AddJobBO;
-import lk.ijse.asms.bo.custom.impl.AddJobBOImpl;
 import lk.ijse.asms.dto.CustomerDTO;
 import lk.ijse.asms.dto.JobDTO;
 import lk.ijse.asms.util.Navigation;
@@ -68,22 +67,12 @@ boolean allDataSet=false;
             String id= addJobBO.getNextJobId();
             CustomerDTO customerByName = addJobBO.getCustomerByName(String.valueOf(cmbCustomerName.getValue()));
             String customerId=customerByName.getId();
-            JobDTO jobDTO =new JobDTO(
-                    id,
-                    jobType,
-                    customerId,
-                    datePickDudeDate.getValue(),
-                    Integer.parseInt(txtTableCount.getText()),
-                    txtLocation.getText(),
-                    "TO DO"
-
-            );
+            JobDTO jobDTO =new JobDTO(id, jobType, customerId, datePickDudeDate.getValue(), Integer.parseInt(txtTableCount.getText()), txtLocation.getText(), "TO DO");
             boolean isAdd= addJobBO.addJob(jobDTO);
             if(isAdd){
                 new Alert(Alert.AlertType.CONFIRMATION,"Add Successfully !!!").show();
                 clean();
             }
-
         } catch (SQLException | ClassNotFoundException e) {
            new Alert(Alert.AlertType.ERROR,String.valueOf(e)).show();
         }
@@ -103,9 +92,6 @@ boolean allDataSet=false;
             }else {
                 new Alert(Alert.AlertType.WARNING, "There Are No Any Customer In The System !!!").show();
             }
-
-
-
 
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);

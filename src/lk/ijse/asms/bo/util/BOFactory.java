@@ -1,5 +1,6 @@
-package lk.ijse.asms.bo;
+package lk.ijse.asms.bo.util;
 
+import lk.ijse.asms.bo.SuperBO;
 import lk.ijse.asms.bo.custom.impl.*;
 
 public class BOFactory {

@@ -3,9 +3,8 @@ package lk.ijse.asms.bo.custom.impl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lk.ijse.asms.bo.custom.PaymentPlaneBO;
-import lk.ijse.asms.dao.DAOFactory;
+import lk.ijse.asms.dao.util.DAOFactory;
 import lk.ijse.asms.dao.custom.PaymentPlaneDAO;
-import lk.ijse.asms.dao.custom.impl.PaymentPlaneDAOImpl;
 import lk.ijse.asms.dao.util.PaymentPlaneType;
 import lk.ijse.asms.dto.PaymentPlaneDTO;
 import lk.ijse.asms.entity.PaymentPlane;
@@ -21,9 +20,9 @@ public class PaymentPlaneBOImpl implements PaymentPlaneBO {
         ObservableList<PaymentPlaneTM> pointDetailList= FXCollections.observableArrayList();
         for(PaymentPlane temp:allPoint){
             pointDetailList.add(new PaymentPlaneTM(
-                    temp.getName(),
-                    temp.getDescription(),
-                    temp.getUnitPrice()));
+                    temp.getPayment_plane_name(),
+                    temp.getPayment_plane_description(),
+                    temp.getPayment_plane_unite_price()));
         }
         return pointDetailList;
     }
@@ -32,7 +31,7 @@ public class PaymentPlaneBOImpl implements PaymentPlaneBO {
         ArrayList<PaymentPlane> allPoint = paymentPlaneDAO.getAllPoint();
         ObservableList<String>allName=FXCollections.observableArrayList();
         for(PaymentPlane paymentPlaneDTO:allPoint){
-            allName.add(paymentPlaneDTO.getName());
+            allName.add(paymentPlaneDTO.getPayment_plane_name());
         }
         return allName;
     }
@@ -43,6 +42,6 @@ public class PaymentPlaneBOImpl implements PaymentPlaneBO {
 
     public PaymentPlaneDTO getPointDetailsByType(PaymentPlaneType PointType) throws SQLException, ClassNotFoundException {
         PaymentPlane pointDetails = paymentPlaneDAO.getPointDetails(PointType);
-       return new PaymentPlaneDTO(pointDetails.getId(),pointDetails.getName(),pointDetails.getDescription(),pointDetails.getUnitPrice());
+       return new PaymentPlaneDTO(pointDetails.getPayment_plane_id(),pointDetails.getPayment_plane_name(),pointDetails.getPayment_plane_description(),pointDetails.getPayment_plane_unite_price());
     }
 }

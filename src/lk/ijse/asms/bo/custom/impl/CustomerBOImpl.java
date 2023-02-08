@@ -1,7 +1,7 @@
 package lk.ijse.asms.bo.custom.impl;
 
 import lk.ijse.asms.bo.custom.CustomerBO;
-import lk.ijse.asms.dao.DAOFactory;
+import lk.ijse.asms.dao.util.DAOFactory;
 import lk.ijse.asms.dao.custom.CustomerDAO;
 import lk.ijse.asms.dto.CustomerDTO;
 import lk.ijse.asms.entity.Customer;
@@ -21,20 +21,17 @@ public class CustomerBOImpl implements CustomerBO {
     }
 
     public ArrayList<CustomerDTO> getAllCustomer() throws SQLException, ClassNotFoundException {
-        ArrayList<Customer> allCustomer = customerDAO.getAllCustomer();
         ArrayList<CustomerDTO> allCustomerDTO=new ArrayList<>();
-        for(int i= allCustomer.size();i>0;i--) {
-            for (Customer customer : allCustomer) {
+            for (Customer customer : customerDAO.getAllCustomer()) {
                 allCustomerDTO.add(new CustomerDTO(
-                        customer.getId(),
-                        customer.getName(),
-                        customer.getAddress(),
-                        customer.getEmail(),
-                        customer.getContact(),
-                        customer.getIt_manager_name(),
-                        customer.getIt_manager_contact()));
+                        customer.getCustomer_id(),
+                        customer.getCustomer_name(),
+                        customer.getCustomer_address(),
+                        customer.getCustomer_email(),
+                        customer.getCustomer_contact(),
+                        customer.getCustomer_it_manager_name(),
+                        customer.getCustomer_it_manager_contact()));
             }
-        }
         return allCustomerDTO;
     }
 
@@ -45,13 +42,13 @@ public class CustomerBOImpl implements CustomerBO {
     public CustomerDTO getCustomerById(String customerId) throws SQLException, ClassNotFoundException {
         Customer customerById = customerDAO.getCustomerById(customerId);
         return new CustomerDTO(
-                customerById.getId(),
-                customerById.getName(),
-                customerById.getAddress(),
-                customerById.getEmail(),
-                customerById.getContact(),
-                customerById.getIt_manager_name(),
-                customerById.getIt_manager_contact());
+                customerById.getCustomer_id(),
+                customerById.getCustomer_name(),
+                customerById.getCustomer_address(),
+                customerById.getCustomer_email(),
+                customerById.getCustomer_contact(),
+                customerById.getCustomer_it_manager_name(),
+                customerById.getCustomer_it_manager_contact());
     }
 
     private Customer convertObjectType(CustomerDTO customerDTO){

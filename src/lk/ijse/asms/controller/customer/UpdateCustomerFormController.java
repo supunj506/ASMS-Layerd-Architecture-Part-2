@@ -10,20 +10,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.asms.bo.BOFactory;
+import lk.ijse.asms.bo.util.BOFactory;
 import lk.ijse.asms.bo.custom.CustomerBO;
-import lk.ijse.asms.bo.custom.impl.CustomerBOImpl;
-import lk.ijse.asms.dao.custom.CustomerDAO;
-import lk.ijse.asms.dao.custom.impl.CustomerDAOImpl;
 import lk.ijse.asms.dto.CustomerDTO;
-import lk.ijse.asms.entity.Customer;
 import lk.ijse.asms.util.Navigation;
 import lk.ijse.asms.util.Routes;
 import lk.ijse.asms.util.ValidateUtil;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
@@ -63,9 +58,8 @@ public class UpdateCustomerFormController {
     private void loadAllCustomer() {
         try {
 
-            ArrayList<CustomerDTO> allCustomer = customerBO.getAllCustomer();
             ObservableList<String>obList= FXCollections.observableArrayList();
-            for(CustomerDTO customerDTO : allCustomer){
+            for(CustomerDTO customerDTO : customerBO.getAllCustomer()){
                 obList.add(customerDTO.getId()+" / "+ customerDTO.getName());
             }
             cmbCusId.setItems(obList);
@@ -124,7 +118,7 @@ public class UpdateCustomerFormController {
         txtCusManagerName.clear();
         txtCusMangerContact.clear();
         btnUpdateCustomer.setDisable(true);
-        
+
     }
 
     public void keyReleasedOnAction(KeyEvent keyEvent) {

@@ -1,60 +1,60 @@
 package lk.ijse.asms.entity;
 
-public class Vehicle {
-    private String reg_no;
-    private String type;
-    private String colour;
-    private String fuel_type;
-    private String brand;
+public class Vehicle implements SuperEntity{
+    private String vehicle_reg_no;
+    private String vehicle_type;
+    private String vehicle_colour;
+    private String vehicle_fuel_type;
+    private String vehicle_brand;
 
     public Vehicle() {
     }
 
-    public Vehicle(String reg_no, String type, String colour, String fuel_type, String brand) {
-        this.reg_no = reg_no;
-        this.type = type;
-        this.colour = colour;
-        this.fuel_type = fuel_type;
-        this.brand = brand;
+    public Vehicle(String vehicle_reg_no, String vehicle_type, String vehicle_colour, String vehicle_fuel_type, String vehicle_brand) {
+        this.vehicle_reg_no = vehicle_reg_no;
+        this.vehicle_type = vehicle_type;
+        this.vehicle_colour = vehicle_colour;
+        this.vehicle_fuel_type = vehicle_fuel_type;
+        this.vehicle_brand = vehicle_brand;
     }
 
-    public String getReg_no() {
-        return reg_no;
+    public String getVehicle_reg_no() {
+        return vehicle_reg_no;
     }
 
-    public void setReg_no(String reg_no) {
-        this.reg_no = reg_no;
+    public void setVehicle_reg_no(String vehicle_reg_no) {
+        this.vehicle_reg_no = vehicle_reg_no;
     }
 
-    public String getType() {
-        return type;
+    public String getVehicle_type() {
+        return vehicle_type;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setVehicle_type(String vehicle_type) {
+        this.vehicle_type = vehicle_type;
     }
 
-    public String getColour() {
-        return colour;
+    public String getVehicle_colour() {
+        return vehicle_colour;
     }
 
-    public void setColour(String colour) {
-        this.colour = colour;
+    public void setVehicle_colour(String vehicle_colour) {
+        this.vehicle_colour = vehicle_colour;
     }
 
-    public String getFuel_type() {
-        return fuel_type;
+    public String getVehicle_fuel_type() {
+        return vehicle_fuel_type;
     }
 
-    public void setFuel_type(String fuel_type) {
-        this.fuel_type = fuel_type;
+    public void setVehicle_fuel_type(String vehicle_fuel_type) {
+        this.vehicle_fuel_type = vehicle_fuel_type;
     }
 
-    public String getBrand() {
-        return brand;
+    public String getVehicle_brand() {
+        return vehicle_brand;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setVehicle_brand(String vehicle_brand) {
+        this.vehicle_brand = vehicle_brand;
     }
 }

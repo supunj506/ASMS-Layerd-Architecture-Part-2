@@ -2,7 +2,7 @@ package lk.ijse.asms.dao.custom.impl;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import lk.ijse.asms.dao.SQLUtil;
+import lk.ijse.asms.dao.util.SQLUtil;
 import lk.ijse.asms.dao.custom.QueryDAO;
 import lk.ijse.asms.dto.CustomDTO;
 
@@ -14,7 +14,7 @@ public class QueryDAOImpl implements QueryDAO {
     @Override
     public ObservableList<CustomDTO> getEmployeeDetails(String employeeType) throws SQLException, ClassNotFoundException {
         ObservableList<CustomDTO>list= FXCollections.observableArrayList();
-        ResultSet rst= SQLUtil.execute("select e.id,e.name,d.job from employee e inner join division d on e.division_id=d.id where e.e_type=?",employeeType);
+        ResultSet rst= SQLUtil.execute("select employee.employee_id,employee.employee_name,division.division_type  from Employee employee inner join Division division on employee.employee_division =division.division_id where employee.employee_type =?",employeeType);
         while (rst.next()){
             list.add(new CustomDTO(
                     rst.getString(1),
@@ -25,10 +25,9 @@ public class QueryDAOImpl implements QueryDAO {
         }
         return list;
     }
-
     @Override
-    public CustomDTO getDetailForSubcPayment(String id) throws SQLException, ClassNotFoundException {
-        ResultSet rst= SQLUtil.execute("select et.emp_id,j.data_point,j.power_pint,j.camera_point from emp_team et inner join team t on t.id=et.team_id inner join job j on j.id=t.job_id where j.id=?",id);
+    public CustomDTO getDetailForSubPayment(String id) throws SQLException, ClassNotFoundException {
+        ResultSet rst= SQLUtil.execute("select et.employee_id ,j.job_data_point_count ,j.job_power_point_count ,j.job_camera_point_count  from EmployeeTeam et inner join Team t on t.team_id =et.team_id inner join Job j on j.job_id =t.job_id where j.job_id =?",id);
         if (rst.next()){
             return new CustomDTO(rst.getString(1),rst.getInt(2),rst.getInt(3),rst.getInt(4));
         }
@@ -36,7 +35,7 @@ public class QueryDAOImpl implements QueryDAO {
     }
     @Override
     public ArrayList<String> getContractBaseFinishJob() throws SQLException, ClassNotFoundException {
-        ResultSet rst= SQLUtil.execute("select sub.id,sub.job_id,e.nic,e.name from subc_payment sub inner join employee e on e.id=sub.emp_id where sub.pay_status='REMINNING'");
+        ResultSet rst= SQLUtil.execute("select sub.sub_payment_id ,sub.job_id,e.employee_nic ,e.employee_name  from SubPayment sub inner join Employee e on e.employee_id =sub.employee_id  where sub.sub_payment_pay_status ='REMINNING'");
         ArrayList<String>list= new ArrayList<>();
         while (rst.next()){
             list.add(rst.getString(1)+" / "+rst.getString(2)+" / "+rst.getString(3)+" / "+rst.getString(4));
@@ -46,7 +45,7 @@ public class QueryDAOImpl implements QueryDAO {
     @Override
     public ObservableList<String> getFinishJob(String status) throws SQLException, ClassNotFoundException {
         ObservableList<String> list=FXCollections.observableArrayList();
-        ResultSet rst= SQLUtil.execute("SELECT j.id,c.name,j.location FROM job j INNER JOIN customer c on j.cus_id = c.id WHERE j.job_status=? order by id;",status);
+        ResultSet rst= SQLUtil.execute("SELECT j.job_id ,c.customer_name ,j.job_location  FROM Job j INNER JOIN Customer c on j.customer_id  = c.customer_id  WHERE j.job_status =? order by job_id ;",status);
         while (rst.next()){
             list.add(rst.getString(1)+" / "+rst.getString(2)+" / "+rst.getString(3));
         }
@@ -54,7 +53,7 @@ public class QueryDAOImpl implements QueryDAO {
     }
     @Override
     public ArrayList<String> getJobDetails(String status) throws SQLException, ClassNotFoundException {
-        ResultSet rst= SQLUtil.execute("SELECT j.id,c.name,j.location FROM job j INNER JOIN customer c ON j.cus_id=c.id WHERE j.job_status=? ",status);
+        ResultSet rst= SQLUtil.execute("SELECT j.job_id ,c.customer_name ,j.job_location  FROM Job j INNER JOIN Customer c ON j.customer_id =c.customer_id  WHERE j.job_status =? ",status);
         ArrayList<String >list=new ArrayList<>();
         while (rst.next()){
             list.add(rst.getString(1)+" / "+rst.getString(2)+" / "+rst.getString(3));

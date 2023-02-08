@@ -1,9 +1,8 @@
 package lk.ijse.asms.bo.custom.impl;
 
 import lk.ijse.asms.bo.custom.VehicleBO;
-import lk.ijse.asms.dao.DAOFactory;
+import lk.ijse.asms.dao.util.DAOFactory;
 import lk.ijse.asms.dao.custom.VehicleDAO;
-import lk.ijse.asms.dao.custom.impl.VehicleDAOImpl;
 import lk.ijse.asms.dto.VehicleDTO;
 import lk.ijse.asms.entity.Vehicle;
 

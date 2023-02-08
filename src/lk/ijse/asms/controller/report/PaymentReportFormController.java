@@ -2,15 +2,10 @@ package lk.ijse.asms.controller.report;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.asms.bo.BOFactory;
+import lk.ijse.asms.bo.util.BOFactory;
 import lk.ijse.asms.bo.custom.PaymentReportBO;
-import lk.ijse.asms.bo.custom.impl.PaymentReportBOImpl;
-import lk.ijse.asms.dao.custom.*;
-import lk.ijse.asms.dao.custom.impl.*;
 import lk.ijse.asms.dao.util.PaymentPlaneType;
 import lk.ijse.asms.dto.EmployeeDTO;
 import lk.ijse.asms.dto.JobDTO;
@@ -22,7 +17,6 @@ import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 

@@ -1,6 +1,6 @@
 package lk.ijse.asms.dao.custom.impl;
 
-import lk.ijse.asms.dao.SQLUtil;
+import lk.ijse.asms.dao.util.SQLUtil;
 import lk.ijse.asms.dao.custom.TeamDAO;
 import lk.ijse.asms.entity.Team;
 
@@ -10,11 +10,11 @@ import java.sql.SQLException;
 public class TeamDAOImpl implements TeamDAO {
     @Override
     public boolean saveTeam(Team teamEntity) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("Insert into team values (?,?)",teamEntity.getId(),teamEntity.getJobId());
+        return SQLUtil.execute("Insert into Team values (?,?)",teamEntity.getTeam_id(),teamEntity.getJob_id());
     }
     @Override
     public String getNextTeamId() throws SQLException, ClassNotFoundException {
-       ResultSet rst= SQLUtil.execute("select id from team order by id desc limit 1 ");
+       ResultSet rst= SQLUtil.execute("select team_id  from Team order by team_id  desc limit 1 ");
        if(rst.next()){
            String id=(rst.getString(1));
            String []ids=id.split("T");

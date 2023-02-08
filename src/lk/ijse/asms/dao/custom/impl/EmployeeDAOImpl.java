@@ -1,8 +1,7 @@
 package lk.ijse.asms.dao.custom.impl;
 
 import lk.ijse.asms.dao.custom.EmployeeDAO;
-import lk.ijse.asms.dto.EmployeeDTO;
-import lk.ijse.asms.dao.SQLUtil;
+import lk.ijse.asms.dao.util.SQLUtil;
 import lk.ijse.asms.entity.Employee;
 
 import java.sql.ResultSet;
@@ -13,7 +12,7 @@ import java.util.ArrayList;
 public class EmployeeDAOImpl implements EmployeeDAO {
     @Override
     public String getNextEmployeeId() throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.execute("SELECT id FROM employee ORDER BY id DESC LIMIT 1");
+        ResultSet rst = SQLUtil.execute("SELECT employee_id  FROM Employee ORDER BY employee_id  DESC LIMIT 1");
         if(rst.next()){
             String empId=rst.getString(1);
             String []ids= empId.split("E0");
@@ -26,42 +25,42 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public boolean saveEmployee(Employee employee) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("INSERT INTO employee VALUES  (?,?,?,?,?,?,?,?,?,?,?)",
-                employee.getId(),
-                employee.getNic(),
-                employee.getName(),
-                employee.getGender(),
-                employee.getDob(),
-                employee.getAddress(),
-                employee.getEmail(),
-                employee.getContact(),
-                employee.getEmpType(),
-                employee.getDivision(),
-                employee.getJoinDate());
+        return SQLUtil.execute("INSERT INTO Employee VALUES  (?,?,?,?,?,?,?,?,?,?,?)",
+                employee.getEmployee_id(),
+                employee.getEmployee_nic(),
+                employee.getEmployee_name(),
+                employee.getEmployee_gender(),
+                employee.getEmployee_dob(),
+                employee.getEmployee_address(),
+                employee.getEmployee_email(),
+                employee.getEmployee_contact(),
+                employee.getEmployee_type(),
+                employee.getEmployee_division(),
+                employee.getEmployee_joinDate());
 
     }
 
     @Override
     public boolean update(Employee employee) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("Update employee set nic=?,name=?,address=?,email=?,contact=?,e_type=?,division_id=? where id=?",
-                employee.getNic(),
-                employee.getName(),
-                employee.getAddress(),
-                employee.getEmail(),
-                employee.getContact(),
-                employee.getEmpType(),
-                employee.getDivision(),
-                employee.getId());
+        return SQLUtil.execute("Update Employee set employee_nic =?,employee_name =?,employee_address =?,employee_email =?,employee_contact =?,employee_type =?,employee_division =? where employee_id =?",
+                employee.getEmployee_nic(),
+                employee.getEmployee_name(),
+                employee.getEmployee_address(),
+                employee.getEmployee_email(),
+                employee.getEmployee_contact(),
+                employee.getEmployee_type(),
+                employee.getEmployee_division(),
+                employee.getEmployee_id());
     }
 
     @Override
     public boolean delete(String text) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("Delete from employee where id =?",text);
+        return SQLUtil.execute("Delete from Employee where employee_id  =?",text);
     }
 
     @Override
     public ArrayList<Employee> getAllEmployee() throws SQLException, ClassNotFoundException {
-        ResultSet rst= SQLUtil.execute("SELECT * FROM employee ");
+        ResultSet rst= SQLUtil.execute("SELECT * FROM Employee ");
         ArrayList<Employee> allEmployeeEntity =new ArrayList<>();
         while (rst.next()){
             allEmployeeEntity.add(new Employee(
@@ -84,7 +83,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public Employee getEmployeeByNic(String nic) throws SQLException, ClassNotFoundException {
-        ResultSet rst= SQLUtil.execute("SELECT * FROM employee WHERE nic=?",nic);
+        ResultSet rst= SQLUtil.execute("SELECT * FROM Employee WHERE employee_nic =?",nic);
         if(rst.next()){
            return new Employee(
                     rst.getString(1),

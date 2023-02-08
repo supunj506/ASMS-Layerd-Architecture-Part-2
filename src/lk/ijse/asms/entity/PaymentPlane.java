@@ -1,50 +1,50 @@
 package lk.ijse.asms.entity;
 
-public class PaymentPlane {
-    private String id;
-    private String name;
-    private String description;
-    private double unitPrice;
+public class PaymentPlane implements SuperEntity{
+    private String payment_plane_id;
+    private String payment_plane_name;
+    private String payment_plane_description;
+    private double payment_plane_unite_price;
 
     public PaymentPlane() {
     }
 
-    public PaymentPlane(String id, String name, String description, double unitPrice) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.unitPrice = unitPrice;
+    public PaymentPlane(String payment_plane_id, String payment_plane_name, String payment_plane_description, double payment_plane_unite_price) {
+        this.payment_plane_id = payment_plane_id;
+        this.payment_plane_name = payment_plane_name;
+        this.payment_plane_description = payment_plane_description;
+        this.payment_plane_unite_price = payment_plane_unite_price;
     }
 
-    public String getId() {
-        return id;
+    public String getPayment_plane_id() {
+        return payment_plane_id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setPayment_plane_id(String payment_plane_id) {
+        this.payment_plane_id = payment_plane_id;
     }
 
-    public String getName() {
-        return name;
+    public String getPayment_plane_name() {
+        return payment_plane_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPayment_plane_name(String payment_plane_name) {
+        this.payment_plane_name = payment_plane_name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getPayment_plane_description() {
+        return payment_plane_description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPayment_plane_description(String payment_plane_description) {
+        this.payment_plane_description = payment_plane_description;
     }
 
-    public double getUnitPrice() {
-        return unitPrice;
+    public double getPayment_plane_unite_price() {
+        return payment_plane_unite_price;
     }
 
-    public void setUnitPrice(double unitPrice) {
-        this.unitPrice = unitPrice;
+    public void setPayment_plane_unite_price(double payment_plane_unite_price) {
+        this.payment_plane_unite_price = payment_plane_unite_price;
     }
 }
