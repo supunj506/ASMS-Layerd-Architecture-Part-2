@@ -8,6 +8,7 @@ import lk.ijse.asms.dao.custom.*;
 import lk.ijse.asms.dao.custom.impl.*;
 import lk.ijse.asms.dao.util.PaymentPlaneType;
 import lk.ijse.asms.dto.*;
+import lk.ijse.asms.entity.Employee;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -30,7 +31,19 @@ public class PaymentReportBOImpl implements PaymentReportBO {
     }
 
     public EmployeeDTO getEmployeeByNic(String employeeId) throws SQLException, ClassNotFoundException {
-        return employeeDAO.getEmployeeByNic(employeeId);
+        Employee employee = employeeDAO.getEmployeeByNic(employeeId);
+        return new EmployeeDTO(
+                employee.getId(),
+                employee.getNic(),
+                employee.getName(),
+                employee.getGender(),
+                employee.getDob(),
+                employee.getAddress(),
+                employee.getEmail(),
+                employee.getContact(),
+                employee.getEmpType(),
+                employee.getDivision(),
+                employee.getJoinDate());
     }
 
     public JobDTO getJobById(String jobId) throws SQLException, ClassNotFoundException {
