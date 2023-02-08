@@ -11,6 +11,7 @@ import lk.ijse.asms.dao.custom.impl.JobDAOImpl;
 import lk.ijse.asms.dao.custom.impl.QueryDAOImpl;
 import lk.ijse.asms.dto.CustomerDTO;
 import lk.ijse.asms.dto.JobDTO;
+import lk.ijse.asms.entity.Customer;
 
 import java.sql.SQLException;
 
@@ -24,7 +25,15 @@ public class JobReportBOImpl implements JobReportBO {
     }
 
     public CustomerDTO getCustomerByName(String customerName) throws SQLException, ClassNotFoundException {
-        return customerDAO.getCustomerByName(customerName);
+        Customer customerByName = customerDAO.getCustomerByName(customerName);
+        return new CustomerDTO(
+                customerByName.getId(),
+                customerByName.getName(),
+                customerByName.getAddress(),
+                customerByName.getEmail(),
+                customerByName.getContact(),
+                customerByName.getItManagerName(),
+                customerByName.getItManagerContact());
     }
 
     public JobDTO getJobById(String jobId) throws SQLException, ClassNotFoundException {

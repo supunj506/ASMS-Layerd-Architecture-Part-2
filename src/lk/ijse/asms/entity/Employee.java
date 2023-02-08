@@ -2,7 +2,7 @@ package lk.ijse.asms.entity;
 
 import java.time.LocalDate;
 
-public class Employee implements SuperEntity {
+public class Employee {
     private String id;
     private String nic;
     private String name;
@@ -17,35 +17,19 @@ public class Employee implements SuperEntity {
 
     public Employee() {
     }
-    public Employee(String id, String nic, String name, String gender, LocalDate dob, String address, String email, String contact, String empType, String division, LocalDate joinDate) {
-        this.setId(id);
-        this.setNic(nic);
-        this.setName(name);
-        this.setGender(gender);
-        this.setDob(dob);
-        this.setAddress(address);
-        this.setEmail(email);
-        this.setContact(contact);
-        this.setEmpType(empType);
-        this.setDivision(division);
-        this.setJoinDate(joinDate);
-    }
 
-    @Override
-    public String toString() {
-        return "EmployeeDTO{" +
-                "id='" + id + '\'' +
-                ", nic='" + nic + '\'' +
-                ", name='" + name + '\'' +
-                ", gender='" + gender + '\'' +
-                ", dob=" + dob +
-                ", address='" + address + '\'' +
-                ", email='" + email + '\'' +
-                ", contact='" + contact + '\'' +
-                ", empType='" + empType + '\'' +
-                ", division='" + division + '\'' +
-                ", joinDate=" + joinDate +
-                '}';
+    public Employee(String id, String nic, String name, String gender, LocalDate dob, String address, String email, String contact, String empType, String division, LocalDate joinDate) {
+        this.id = id;
+        this.nic = nic;
+        this.name = name;
+        this.gender = gender;
+        this.dob = dob;
+        this.address = address;
+        this.email = email;
+        this.contact = contact;
+        this.empType = empType;
+        this.division = division;
+        this.joinDate = joinDate;
     }
 
     public String getId() {
@@ -135,4 +119,5 @@ public class Employee implements SuperEntity {
     public void setJoinDate(LocalDate joinDate) {
         this.joinDate = joinDate;
     }
+
 }

@@ -1,6 +1,6 @@
 package lk.ijse.asms.entity;
 
-public class Customer implements SuperEntity {
+public class Customer {
     private String id;
     private String name;
     private String address;
@@ -13,13 +13,13 @@ public class Customer implements SuperEntity {
     }
 
     public Customer(String id, String name, String address, String email, String contact, String itManagerName, String itManagerContact) {
-        this.setId(id);
-        this.setName(name);
-        this.setAddress(address);
-        this.setEmail(email);
-        this.setContact(contact);
-        this.setItManagerName(itManagerName);
-        this.setItManagerContact(itManagerContact);
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.email = email;
+        this.contact = contact;
+        this.itManagerName = itManagerName;
+        this.itManagerContact = itManagerContact;
     }
 
     @Override

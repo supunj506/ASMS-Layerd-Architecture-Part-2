@@ -3,6 +3,7 @@ package lk.ijse.asms.dao.custom.impl;
 import lk.ijse.asms.dao.custom.EmployeeDAO;
 import lk.ijse.asms.dto.EmployeeDTO;
 import lk.ijse.asms.dao.SQLUtil;
+import lk.ijse.asms.entity.Employee;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,44 +25,46 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public boolean saveEmployee(EmployeeDTO employeeDTO) throws SQLException, ClassNotFoundException {
+    public boolean saveEmployee(Employee employee) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("INSERT INTO employee VALUES  (?,?,?,?,?,?,?,?,?,?,?)",
-                employeeDTO.getId(),
-                employeeDTO.getNic(),
-                employeeDTO.getName(),
-                employeeDTO.getGender(),
-                employeeDTO.getDob(),
-                employeeDTO.getAddress(),
-                employeeDTO.getEmail(),
-                employeeDTO.getContact(),
-                employeeDTO.getEmpType(),
-                employeeDTO.getDivision(),
-                employeeDTO.getJoinDate());
+                employee.getId(),
+                employee.getNic(),
+                employee.getName(),
+                employee.getGender(),
+                employee.getDob(),
+                employee.getAddress(),
+                employee.getEmail(),
+                employee.getContact(),
+                employee.getEmpType(),
+                employee.getDivision(),
+                employee.getJoinDate());
 
     }
+
     @Override
-    public boolean update(EmployeeDTO employeeDTO) throws SQLException, ClassNotFoundException {
+    public boolean update(Employee employee) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("Update employee set nic=?,name=?,address=?,email=?,contact=?,e_type=?,division_id=? where id=?",
-                employeeDTO.getNic(),
-                employeeDTO.getName(),
-                employeeDTO.getAddress(),
-                employeeDTO.getEmail(),
-                employeeDTO.getContact(),
-                employeeDTO.getEmpType(),
-                employeeDTO.getDivision(),
-                employeeDTO.getId());
+                employee.getNic(),
+                employee.getName(),
+                employee.getAddress(),
+                employee.getEmail(),
+                employee.getContact(),
+                employee.getEmpType(),
+                employee.getDivision(),
+                employee.getId());
     }
+
     @Override
     public boolean delete(String text) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("Delete from employee where id =?",text);
     }
 
     @Override
-    public ArrayList<EmployeeDTO> getAllEmployee() throws SQLException, ClassNotFoundException {
+    public ArrayList<Employee> getAllEmployee() throws SQLException, ClassNotFoundException {
         ResultSet rst= SQLUtil.execute("SELECT * FROM employee ");
-        ArrayList<EmployeeDTO> allEmployeeDTO =new ArrayList<>();
+        ArrayList<Employee> allEmployeeEntity =new ArrayList<>();
         while (rst.next()){
-            allEmployeeDTO.add(new EmployeeDTO(
+            allEmployeeEntity.add(new Employee(
                     rst.getString(1),
                     rst.getString(2),
                     rst.getString(3),
@@ -76,13 +79,14 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
             ));
         }
-        return allEmployeeDTO;
+        return allEmployeeEntity;
     }
+
     @Override
-    public EmployeeDTO getEmployeeByNic(String nic) throws SQLException, ClassNotFoundException {
+    public Employee getEmployeeByNic(String nic) throws SQLException, ClassNotFoundException {
         ResultSet rst= SQLUtil.execute("SELECT * FROM employee WHERE nic=?",nic);
         if(rst.next()){
-           return new EmployeeDTO(
+           return new Employee(
                     rst.getString(1),
                     rst.getString(2),
                     rst.getString(3),

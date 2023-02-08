@@ -9,6 +9,7 @@ import lk.ijse.asms.dao.custom.impl.CustomerDAOImpl;
 import lk.ijse.asms.dao.custom.impl.JobDAOImpl;
 import lk.ijse.asms.dto.CustomerDTO;
 import lk.ijse.asms.dto.JobDTO;
+import lk.ijse.asms.entity.Customer;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -22,7 +23,15 @@ public class AddJobBOImpl implements AddJobBO {
     }
 
     public CustomerDTO getCustomerByName(String customerName) throws SQLException, ClassNotFoundException {
-        return customerDAO.getCustomerByName(customerName);
+        Customer customerByName = customerDAO.getCustomerByName(customerName);
+        return new CustomerDTO(
+                customerByName.getId(),
+                customerByName.getName(),
+                customerByName.getAddress(),
+                customerByName.getEmail(),
+                customerByName.getContact(),
+                customerByName.getItManagerName(),
+                customerByName.getItManagerContact());
     }
 
     public boolean addJob(JobDTO jobDTO) throws SQLException, ClassNotFoundException {
@@ -30,6 +39,20 @@ public class AddJobBOImpl implements AddJobBO {
     }
 
     public ArrayList<CustomerDTO> getAllCustomer() throws SQLException, ClassNotFoundException {
-        return customerDAO.getAllCustomer();
+        ArrayList<Customer> allCustomer = customerDAO.getAllCustomer();
+        ArrayList<CustomerDTO> allCustomerDTO=new ArrayList<>();
+        for(int i= allCustomer.size();i>0;i--) {
+            for (Customer customer : allCustomer) {
+                allCustomerDTO.add(new CustomerDTO(
+                        customer.getId(),
+                        customer.getName(),
+                        customer.getAddress(),
+                        customer.getEmail(),
+                        customer.getContact(),
+                        customer.getItManagerName(),
+                        customer.getItManagerContact()));
+            }
+        }
+        return allCustomerDTO;
     }
 }
