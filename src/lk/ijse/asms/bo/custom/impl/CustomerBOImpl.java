@@ -10,7 +10,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CustomerBOImpl implements CustomerBO {
-    private final CustomerDAO customerDAO=(CustomerDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.CUSTOMER);
+    private final CustomerDAO customerDAO;
+
+    public CustomerBOImpl() {
+        customerDAO=DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.CUSTOMER);
+    }
 
     public String getNextCustomerId() throws SQLException, ClassNotFoundException {
         return customerDAO.getNextCustomerId();

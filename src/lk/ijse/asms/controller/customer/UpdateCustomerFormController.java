@@ -23,8 +23,6 @@ import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 public class UpdateCustomerFormController {
-    private final CustomerBO customerBO=(CustomerBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.CUSTOMER);
-
     public AnchorPane updateCustomerPane;
     public JFXTextField txtCusName;
     public JFXTextField txtCusAddress;
@@ -37,7 +35,9 @@ public class UpdateCustomerFormController {
     LinkedHashMap<JFXTextField,Pattern> map=new LinkedHashMap<>();
     String cusId=null;
 
+    private CustomerBO customerBO;
     public void initialize(){
+        customerBO=BOFactory.getBoFactory().getBO(BOFactory.BOTypes.CUSTOMER);
         loadAllCustomer();
         btnUpdateCustomer.setDisable(true);
         Pattern cusName=Pattern.compile("^[A-z ]{3,30}$");

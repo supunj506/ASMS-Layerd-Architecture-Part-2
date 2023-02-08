@@ -14,9 +14,16 @@ import lk.ijse.asms.entity.Job;
 import java.sql.SQLException;
 
 public class JobReportBOImpl implements JobReportBO {
-    private final CustomerDAO customerDAO=(CustomerDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.CUSTOMER);
-    private final JobDAO jobDAO=(JobDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.JOB);
-    private final QueryDAO queryDAO=(QueryDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.QUERY);
+    private final CustomerDAO customerDAO;
+    private final JobDAO jobDAO;
+    private final QueryDAO queryDAO;
+
+    public JobReportBOImpl() {
+        customerDAO=DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.CUSTOMER);
+        jobDAO=DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.JOB);
+        queryDAO=DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.QUERY);
+
+    }
 
     public ObservableList<String> getFinishJobList(String status) throws SQLException, ClassNotFoundException {
         return queryDAO.getFinishJob(status);

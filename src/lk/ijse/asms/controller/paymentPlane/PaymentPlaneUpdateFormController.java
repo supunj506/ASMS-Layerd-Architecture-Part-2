@@ -26,8 +26,6 @@ import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 public class PaymentPlaneUpdateFormController {
-    private final PaymentPlaneBO paymentPlaneBO=(PaymentPlaneBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PAYMENTPLANE);
-
     public AnchorPane paymentPlaneUpdatePane;
     public JFXTextField txtDescription;
     public JFXTextField txtUnitPrice;
@@ -39,7 +37,10 @@ public class PaymentPlaneUpdateFormController {
     public TableColumn tmPrice;
     LinkedHashMap<JFXTextField,Pattern> map=new LinkedHashMap<>();
 
+    private PaymentPlaneBO paymentPlaneBO;
+
     public void initialize(){
+        paymentPlaneBO=BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PAYMENTPLANE);
         loadPoint();
         Pattern description=Pattern.compile("^[A-z 0-9/]{4,40}$");
         Pattern unitePrice=Pattern.compile("^[1-9][0-9]{3}[.][0-9]$");

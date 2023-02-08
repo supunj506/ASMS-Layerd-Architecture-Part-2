@@ -16,12 +16,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class PaymentReportBOImpl implements PaymentReportBO {
-    private final EmployeeDAO employeeDAO=(EmployeeDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.EMPLOYEE);
-    private final SubPaymentDAO paymentDAO=(SubPaymentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.SUBCPAYMENT);
-    private final JobDAO jobDAO=(JobDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.JOB);
-    private final QueryDAO queryDAO=(QueryDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.QUERY);
-    private final PaymentPlaneDAO paymentPlaneDAO=(PaymentPlaneDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PAYMENTPLANE);
+    private final EmployeeDAO employeeDAO;
+    private final SubPaymentDAO paymentDAO;
+    private final JobDAO jobDAO;
+    private final QueryDAO queryDAO;
+    private final PaymentPlaneDAO paymentPlaneDAO;
 
+    public PaymentReportBOImpl() {
+        employeeDAO=DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.EMPLOYEE);
+        paymentDAO=DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.SUBCPAYMENT);
+        jobDAO=DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.JOB);
+        queryDAO=DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.QUERY);
+        paymentPlaneDAO=DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PAYMENTPLANE);
+    }
 
     public ObservableList<String> getAllContractBaseFinishJob() throws SQLException, ClassNotFoundException {
         ArrayList<String> jobList= queryDAO.getContractBaseFinishJob();

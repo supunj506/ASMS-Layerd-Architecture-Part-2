@@ -10,34 +10,33 @@ public class BOFactory {
     }
 
     public static BOFactory getBoFactory(){
-        if(boFactory==null){
-            boFactory=new BOFactory();
-        }
-        return boFactory;
+        return boFactory==null?boFactory=new BOFactory():boFactory;
     }
+
     public enum BOTypes{
         ADDJOB,CALLJOB,CUSTOMER,EMPLOYEE,FINISHJOB,JOBREPORT,PAYMENTPLANE,PAYMENTREPORT,VEHICLE
     }
-    public SuperBO getBO(BOTypes types){
+
+    public <T extends SuperBO >T getBO(BOTypes types){
         switch (types){
             case ADDJOB:
-                return new AddJobBOImpl();
+                return (T)new AddJobBOImpl();
             case CALLJOB:
-                return new CallJobBOImpl();
+                return (T) new CallJobBOImpl();
             case CUSTOMER:
-                return new CustomerBOImpl();
+                return (T) new CustomerBOImpl();
             case EMPLOYEE:
-                return new EmployeeBOImpl();
+                return (T) new EmployeeBOImpl();
             case FINISHJOB:
-                return new FinishJobBOImpl();
+                return (T) new FinishJobBOImpl();
             case JOBREPORT:
-                return new JobReportBOImpl();
+                return (T) new JobReportBOImpl();
             case PAYMENTPLANE:
-                return new PaymentPlaneBOImpl();
+                return (T) new PaymentPlaneBOImpl();
             case PAYMENTREPORT:
-                return new PaymentReportBOImpl();
+                return (T) new PaymentReportBOImpl();
             case VEHICLE:
-                return new VehicleBOImpl();
+                return (T) new VehicleBOImpl();
             default:
                 return null;
         }

@@ -16,8 +16,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class AddVehicleFormController {
-    private final VehicleBO vehicleBO=(VehicleBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.VEHICLE);
-
     public AnchorPane vehicleManagePane;
     public JFXTextField txtRegNo;
     public JFXTextField txtColour;
@@ -28,6 +26,12 @@ public class AddVehicleFormController {
     public JFXRadioButton radioDiesel;
     public ToggleGroup fuelType;
     public JFXRadioButton radioPetrol;
+
+    private VehicleBO vehicleBO;
+
+    public void initialize(){
+        vehicleBO=BOFactory.getBoFactory().getBO(BOFactory.BOTypes.VEHICLE);
+    }
 
     public void backManagerFormOnAction(ActionEvent actionEvent) {
         try {

@@ -21,10 +21,17 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class FinishJobBOImpl implements FinishJobBO {
-    private final SubPaymentDAO paymentDAO=(SubPaymentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.SUBCPAYMENT);
-    private final JobDAO jobDAO=(JobDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.JOB);
-    private final QueryDAO queryDAO=(QueryDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.QUERY);
-    private final PaymentPlaneDAO paymentPlaneDAO=(PaymentPlaneDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PAYMENTPLANE);
+    private final SubPaymentDAO paymentDAO;
+    private final JobDAO jobDAO;
+    private final QueryDAO queryDAO;
+    private final PaymentPlaneDAO paymentPlaneDAO;
+
+    public FinishJobBOImpl() {
+        paymentDAO=DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.SUBCPAYMENT);
+        jobDAO=DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.JOB);
+        queryDAO=DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.QUERY);
+        paymentPlaneDAO=DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PAYMENTPLANE);
+    }
 
     public ObservableList<String> getFinishJob(String jobStatus) throws SQLException, ClassNotFoundException {
         return queryDAO.getFinishJob(jobStatus);

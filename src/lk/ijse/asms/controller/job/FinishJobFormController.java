@@ -21,8 +21,6 @@ import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 public class FinishJobFormController {
-    private final FinishJobBO finishJobBOImpl =(FinishJobBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.FINISHJOB);
-
     public AnchorPane finishJobPane;
     public JFXComboBox<String> cmbJob;
     public JFXTextField txtPower;
@@ -31,7 +29,10 @@ public class FinishJobFormController {
     public JFXButton btnFinishJob;
     LinkedHashMap<JFXTextField, Pattern> map = new LinkedHashMap<>();
 
+    private FinishJobBO finishJobBO;
+
     public void initialize() {
+        finishJobBO=BOFactory.getBoFactory().getBO(BOFactory.BOTypes.FINISHJOB);
         loadJob();
         Pattern power = Pattern.compile("^[0-9]{1,2}$");
         map.put(txtPower, power);
@@ -42,7 +43,7 @@ public class FinishJobFormController {
 
     private void loadJob() {
         try {
-            ObservableList<String> jobList = finishJobBOImpl.getFinishJob("DOING");
+            ObservableList<String> jobList = finishJobBO.getFinishJob("DOING");
             cmbJob.setItems(jobList);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -63,7 +64,7 @@ public class FinishJobFormController {
                    Integer.parseInt(txtCamera.getText()));
 
         try {
-            boolean isFinishJob= finishJobBOImpl.finishJob(jobId,subPaymentDTO);/* only need to be here */
+            boolean isFinishJob= finishJobBO.finishJob(jobId,subPaymentDTO);/* only need to be here */
             if (isFinishJob){
                 clean();
                 new Alert(Alert.AlertType.CONFIRMATION,"Finish The Job Successfully !!!").show();

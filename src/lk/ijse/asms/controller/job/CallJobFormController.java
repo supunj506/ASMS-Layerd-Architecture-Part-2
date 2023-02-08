@@ -23,7 +23,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class CallJobFormController {
-    private final CallJobBO callJobBO=(CallJobBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.CALLJOB);
 
     public AnchorPane callJobPane;
     public JFXComboBox <String>cmbEmployee;
@@ -44,7 +43,10 @@ public class CallJobFormController {
     boolean contractSelected=false;
     ObservableList<TeamTM>list=FXCollections.observableArrayList();
 
+    private CallJobBO callJobBO;
+
     public void initialize(){
+        callJobBO=BOFactory.getBoFactory().getBO(BOFactory.BOTypes.CALLJOB);
 
         loadJobDetails();
         loadVehicleDetails();

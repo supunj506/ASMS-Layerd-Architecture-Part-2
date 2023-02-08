@@ -24,7 +24,6 @@ import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 public class AddJobFormController {
-    private final AddJobBO addJobBO=(AddJobBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ADDJOB);
 
     public AnchorPane addJobPane;
     public JFXRadioButton radioNew;
@@ -37,8 +36,10 @@ public class AddJobFormController {
     public JFXButton btnAddJob;
     LinkedHashMap<JFXTextField, Pattern> map=new LinkedHashMap<>();
 
-    public void initialize(){
+    private AddJobBO addJobBO;
 
+    public void initialize(){
+        addJobBO=BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ADDJOB);
         loadCustomerName();
         Pattern tableCount=Pattern.compile("^[0-9]{1,2}$");
         Pattern location=Pattern.compile("^[A-z]{4,15}$");

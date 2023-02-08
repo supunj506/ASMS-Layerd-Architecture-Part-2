@@ -12,7 +12,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class EmployeeBOImpl implements EmployeeBO {
-    private final EmployeeDAO employeeDAO=(EmployeeDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.EMPLOYEE);
+    private final EmployeeDAO employeeDAO;
+
+    public EmployeeBOImpl() {
+        employeeDAO=DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.EMPLOYEE);
+    }
 
     public String getNextEmployeeId() throws SQLException, ClassNotFoundException {
         return employeeDAO.getNextEmployeeId();

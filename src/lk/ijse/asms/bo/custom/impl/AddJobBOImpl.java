@@ -13,8 +13,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class AddJobBOImpl implements AddJobBO {
-    private final CustomerDAO customerDAO= (CustomerDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.CUSTOMER);
-    private final JobDAO jobDAO=(JobDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.JOB);
+    private final CustomerDAO customerDAO;
+    private final JobDAO jobDAO;
+
+    public AddJobBOImpl() {
+        customerDAO=DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.CUSTOMER);
+        jobDAO=DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.JOB);
+    }
 
     public String getNextJobId() throws SQLException, ClassNotFoundException {
         return jobDAO.getNextJobId();

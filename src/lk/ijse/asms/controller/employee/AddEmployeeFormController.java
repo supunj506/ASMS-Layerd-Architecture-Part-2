@@ -24,8 +24,6 @@ import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 public class AddEmployeeFormController {
-    private final EmployeeBO employeeBO=(EmployeeBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.EMPLOYEE);
-
     public JFXTextField txtNic;
     public JFXTextField txtName;
     public JFXTextField txtAddress;
@@ -47,7 +45,11 @@ public class AddEmployeeFormController {
     public AnchorPane addEmployeePane;
     public JFXButton btnAddEmployee;
     LinkedHashMap<JFXTextField,Pattern> map=new LinkedHashMap<>();
+
+    private EmployeeBO employeeBO;
+
     public void initialize(){
+        employeeBO=BOFactory.getBoFactory().getBO(BOFactory.BOTypes.EMPLOYEE);
         Pattern nic=Pattern.compile("^[1-9][0-9]{8}([0-9]{3})?(v|V)?$");
         Pattern name=Pattern.compile("^[A-z ]{3,30}$");
         Pattern address=Pattern.compile("^[A-z0-9/]{4,40}$");

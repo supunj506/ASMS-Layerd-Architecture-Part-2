@@ -19,7 +19,6 @@ import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 public class AddCustomerFormController {
-    private final CustomerBO customerBO=(CustomerBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.CUSTOMER);
 
     public AnchorPane addCustomerPane;
     public JFXTextField txtCusName;
@@ -31,8 +30,10 @@ public class AddCustomerFormController {
     public JFXButton btnAddCustomer;
     LinkedHashMap<JFXTextField,Pattern> map=new LinkedHashMap<>();
 
-    public void initialize(){
+    private CustomerBO customerBO;
 
+    public void initialize(){
+        customerBO=BOFactory.getBoFactory().getBO(BOFactory.BOTypes.CUSTOMER);
         Pattern cusName=Pattern.compile("^[A-z ]{3,30}$");
         Pattern cusAddress=Pattern.compile("^[A-z0-9/]{4,40}$");
         Pattern cusEmail=Pattern.compile("^[a-z0-9]{4,40}@(gmail|yahoo|ymail).com$");

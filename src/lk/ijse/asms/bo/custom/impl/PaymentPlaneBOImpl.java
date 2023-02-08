@@ -13,7 +13,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class PaymentPlaneBOImpl implements PaymentPlaneBO {
-    private final PaymentPlaneDAO paymentPlaneDAO=(PaymentPlaneDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PAYMENTPLANE);
+    private final PaymentPlaneDAO paymentPlaneDAO;
+
+    public PaymentPlaneBOImpl() {
+        paymentPlaneDAO=DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PAYMENTPLANE);
+    }
 
     public ObservableList<PaymentPlaneTM> getAllPointDetails() throws SQLException, ClassNotFoundException {
         ArrayList<PaymentPlane> allPoint = paymentPlaneDAO.getAllPoint();

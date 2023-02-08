@@ -8,41 +8,39 @@ public class DAOFactory {
 
     private DAOFactory() {
     }
+
     public static DAOFactory getDaoFactory(){
-        if(daoFactory==null){
-            daoFactory=new DAOFactory();
-        }
-        return daoFactory;
+        return daoFactory==null?daoFactory=new DAOFactory():daoFactory;
     }
     /* public static final Integer values */
     public enum DAOTypes{
         CUSTOMER,DIVISION,EMPLOYEE,EMPTEAM,JOB,PAYMENTPLANE,QUERY,SUBCPAYMENT,TEAM,USER,VEHICLE
     }
     /* Method for hiding the object creation logic */
-    public SuperDAO getDAO(DAOTypes types){
+    public <T extends SuperDAO > T getDAO(DAOTypes types){
         switch (types){
             case CUSTOMER:
-                return new CustomerDAOImpl();
+                return (T) new CustomerDAOImpl();
             case DIVISION:
-                return new DivisionDAOImpl();
+                return (T) new DivisionDAOImpl();
             case EMPLOYEE:
-                return new EmployeeDAOImpl();
+                return (T) new EmployeeDAOImpl();
             case EMPTEAM:
-                return new EmployeeTeamDAOImpl();
+                return (T) new EmployeeTeamDAOImpl();
             case JOB:
-                return new JobDAOImpl();
+                return (T) new JobDAOImpl();
             case PAYMENTPLANE:
-                return new PaymentPlaneDAOImpl();
+                return (T) new PaymentPlaneDAOImpl();
             case QUERY:
-                return new QueryDAOImpl();
+                return (T) new QueryDAOImpl();
             case SUBCPAYMENT:
-                return new SubPaymentDAOImpl();
+                return (T) new SubPaymentDAOImpl();
             case TEAM:
-                return new TeamDAOImpl();
+                return (T) new TeamDAOImpl();
             case USER:
-                return new UserDAOImpl();
+                return (T) new UserDAOImpl();
             case VEHICLE:
-                return new VehicleDAOImpl();
+                return (T) new VehicleDAOImpl();
             default:
                 return null;
         }

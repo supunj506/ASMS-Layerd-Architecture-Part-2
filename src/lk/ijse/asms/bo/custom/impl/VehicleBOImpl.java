@@ -9,7 +9,11 @@ import lk.ijse.asms.entity.Vehicle;
 import java.sql.SQLException;
 
 public class VehicleBOImpl implements VehicleBO {
-    private final VehicleDAO vehicleDAO=(VehicleDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.VEHICLE);
+    private final VehicleDAO vehicleDAO;
+
+    public VehicleBOImpl() {
+        vehicleDAO=DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.VEHICLE);
+    }
 
     public boolean saveVehicle(VehicleDTO vehicleDTO) throws SQLException, ClassNotFoundException {
         return vehicleDAO.save(new Vehicle(vehicleDTO.getReg_no(),vehicleDTO.getType(),vehicleDTO.getColour(),vehicleDTO.getFuel_type(),vehicleDTO.getBrand()));

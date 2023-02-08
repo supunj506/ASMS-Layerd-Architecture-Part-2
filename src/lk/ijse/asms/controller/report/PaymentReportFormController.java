@@ -21,13 +21,14 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class PaymentReportFormController {
-    private final PaymentReportBO paymentReportBO=(PaymentReportBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PAYMENTREPORT);
-
     public AnchorPane contractPaymentPane;
     public JFXComboBox <String>cmbJob;
     public JFXButton btnGetPaySlip;
 
+    private PaymentReportBO paymentReportBO;
+
     public  void initialize(){
+        paymentReportBO=BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PAYMENTREPORT);
         btnGetPaySlip.setDisable(true);
         loadAllJob();
     }
