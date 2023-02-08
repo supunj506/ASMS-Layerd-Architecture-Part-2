@@ -81,7 +81,7 @@ public class CallJobBOImpl implements CallJobBO {
     public ObservableList<CustomDTO> getEmployeeDetails(String jobType) throws SQLException, ClassNotFoundException {
         ObservableList<CustomDTO>employeeDetail= FXCollections.observableArrayList();
         for(CustomEntity customEntity:queryDAO.getEmployeeDetails(jobType)){
-            employeeDetail.add(new CustomDTO(customEntity.getEmployee_id(),customEntity.getEmployee_name(),customEntity.getEmployee_type()));
+            employeeDetail.add(new CustomDTO(customEntity.getEmployee_id(),customEntity.getEmployee_name(),customEntity.getDivision_type()));
         }
         return employeeDetail;
     }
