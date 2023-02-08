@@ -1,7 +1,6 @@
 package lk.ijse.asms.dao.custom.impl;
 
 import lk.ijse.asms.dao.custom.CustomerDAO;
-import lk.ijse.asms.dto.CustomerDTO;
 import lk.ijse.asms.dao.SQLUtil;
 import lk.ijse.asms.entity.Customer;
 
@@ -26,12 +25,12 @@ public class CustomerDAOImpl implements CustomerDAO{
 
     @Override
     public boolean saveCustomer(Customer customer) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("INSERT INTO customer VALUES (?,?,?,?,?,?,?)", customer.getId(), customer.getName(), customer.getAddress(), customer.getEmail(), customer.getContact(), customer.getItManagerName(), customer.getItManagerContact());
+        return SQLUtil.execute("INSERT INTO customer VALUES (?,?,?,?,?,?,?)", customer.getId(), customer.getName(), customer.getAddress(), customer.getEmail(), customer.getContact(), customer.getIt_manager_name(), customer.getIt_manager_contact());
     }
 
     @Override
     public boolean update(Customer customer) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("UPDATE customer SET name=?,address=?,email=?,contact=?,it_manager_name=?,it_manager_contact=? WHERE id=?", customer.getName(), customer.getAddress(), customer.getEmail(), customer.getContact(), customer.getItManagerName(), customer.getItManagerContact(), customer.getId());
+        return SQLUtil.execute("UPDATE customer SET name=?,address=?,email=?,contact=?,it_manager_name=?,it_manager_contact=? WHERE id=?", customer.getName(), customer.getAddress(), customer.getEmail(), customer.getContact(), customer.getIt_manager_name(), customer.getIt_manager_contact(), customer.getId());
     }
 
     @Override

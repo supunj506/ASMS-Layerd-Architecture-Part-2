@@ -6,20 +6,20 @@ public class Customer {
     private String address;
     private String email;
     private String contact;
-    private String itManagerName;
-    private String itManagerContact;
+    private String it_manager_name;
+    private String it_manager_contact;
 
     public Customer() {
     }
 
-    public Customer(String id, String name, String address, String email, String contact, String itManagerName, String itManagerContact) {
+    public Customer(String id, String name, String address, String email, String contact, String it_manager_name, String it_manager_contact) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.email = email;
         this.contact = contact;
-        this.itManagerName = itManagerName;
-        this.itManagerContact = itManagerContact;
+        this.it_manager_name = it_manager_name;
+        this.it_manager_contact = it_manager_contact;
     }
 
     @Override
@@ -30,8 +30,8 @@ public class Customer {
                 ", address='" + address + '\'' +
                 ", email='" + email + '\'' +
                 ", contact='" + contact + '\'' +
-                ", itManagerName='" + itManagerName + '\'' +
-                ", itManagerContact='" + itManagerContact + '\'' +
+                ", itManagerName='" + it_manager_name + '\'' +
+                ", itManagerContact='" + it_manager_contact + '\'' +
                 '}';
     }
 
@@ -75,19 +75,19 @@ public class Customer {
         this.contact = contact;
     }
 
-    public String getItManagerName() {
-        return itManagerName;
+    public String getIt_manager_name() {
+        return it_manager_name;
     }
 
-    public void setItManagerName(String itManagerName) {
-        this.itManagerName = itManagerName;
+    public void setIt_manager_name(String it_manager_name) {
+        this.it_manager_name = it_manager_name;
     }
 
-    public String getItManagerContact() {
-        return itManagerContact;
+    public String getIt_manager_contact() {
+        return it_manager_contact;
     }
 
-    public void setItManagerContact(String itManagerContact) {
-        this.itManagerContact = itManagerContact;
+    public void setIt_manager_contact(String it_manager_contact) {
+        this.it_manager_contact = it_manager_contact;
     }
 }

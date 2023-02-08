@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import lk.ijse.asms.dao.custom.VehicleDAO;
 import lk.ijse.asms.dto.VehicleDTO;
 import lk.ijse.asms.dao.SQLUtil;
+import lk.ijse.asms.entity.Vehicle;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,8 +14,8 @@ import java.util.ArrayList;
 public class VehicleDAOImpl implements VehicleDAO {
 
     @Override
-    public boolean save(VehicleDTO vehicleDTO) throws SQLException, ClassNotFoundException {
-       return  (SQLUtil.execute("INSERT INTO vehicle VALUES (?,?,?,?,?)", vehicleDTO.getReg_no(), vehicleDTO.getType(), vehicleDTO.getColour(), vehicleDTO.getFuel_type(), vehicleDTO.getBrand()));
+    public boolean save(Vehicle vehicleEntity) throws SQLException, ClassNotFoundException {
+       return  (SQLUtil.execute("INSERT INTO vehicle VALUES (?,?,?,?,?)", vehicleEntity.getReg_no(), vehicleEntity.getType(), vehicleEntity.getColour(), vehicleEntity.getFuel_type(), vehicleEntity.getBrand()));
     }
     @Override
     public ArrayList<String> getRegNo() throws SQLException, ClassNotFoundException {
@@ -27,10 +28,10 @@ public class VehicleDAOImpl implements VehicleDAO {
 
     }
     @Override
-    public VehicleDTO search(String reg) throws SQLException, ClassNotFoundException {
+    public Vehicle search(String reg) throws SQLException, ClassNotFoundException {
         ResultSet rst= SQLUtil.execute("SELECT * FROM vehicle where reg_no=?",reg);
         if (rst.next()){
-            return new VehicleDTO(
+            return new Vehicle(
                     rst.getString(1),
                     rst.getString(2),
                     rst.getString(3),
@@ -46,13 +47,12 @@ public class VehicleDAOImpl implements VehicleDAO {
         return  SQLUtil.execute("DELETE FROM vehicle WHERE reg_no=?",reg);
 
     }
-
     @Override
-    public VehicleDTO getVehicle(String regNo) throws SQLException, ClassNotFoundException {
+    public Vehicle getVehicle(String regNo) throws SQLException, ClassNotFoundException {
         ResultSet rst= SQLUtil.execute("SELECT * FROM vehicle WHERE reg_no=?",regNo);
 
         if(rst.next()){
-            return new VehicleDTO(
+            return new Vehicle(
                     rst.getString(1),
                     rst.getString(2),
                     rst.getString(3),
@@ -63,13 +63,13 @@ public class VehicleDAOImpl implements VehicleDAO {
         return null;
     }
     @Override
-    public boolean update(VehicleDTO vehicleDTO) throws SQLException, ClassNotFoundException {
+    public boolean update(Vehicle vehicleEntity) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("UPDATE vehicle SET type=?,color=?,fuel_type=?,brand=? WHERE reg_no=?",
-                vehicleDTO.getType(),
-                vehicleDTO.getColour(),
-                vehicleDTO.getFuel_type(),
-                vehicleDTO.getBrand(),
-                vehicleDTO.getReg_no());
+                vehicleEntity.getType(),
+                vehicleEntity.getColour(),
+                vehicleEntity.getFuel_type(),
+                vehicleEntity.getBrand(),
+                vehicleEntity.getReg_no());
     }
     @Override
     public ObservableList<String> getAllVehicle() throws SQLException, ClassNotFoundException {

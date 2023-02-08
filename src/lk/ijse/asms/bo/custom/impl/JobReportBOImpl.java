@@ -6,12 +6,10 @@ import lk.ijse.asms.dao.DAOFactory;
 import lk.ijse.asms.dao.custom.CustomerDAO;
 import lk.ijse.asms.dao.custom.JobDAO;
 import lk.ijse.asms.dao.custom.QueryDAO;
-import lk.ijse.asms.dao.custom.impl.CustomerDAOImpl;
-import lk.ijse.asms.dao.custom.impl.JobDAOImpl;
-import lk.ijse.asms.dao.custom.impl.QueryDAOImpl;
 import lk.ijse.asms.dto.CustomerDTO;
 import lk.ijse.asms.dto.JobDTO;
 import lk.ijse.asms.entity.Customer;
+import lk.ijse.asms.entity.Job;
 
 import java.sql.SQLException;
 
@@ -32,11 +30,26 @@ public class JobReportBOImpl implements JobReportBO {
                 customerByName.getAddress(),
                 customerByName.getEmail(),
                 customerByName.getContact(),
-                customerByName.getItManagerName(),
-                customerByName.getItManagerContact());
+                customerByName.getIt_manager_name(),
+                customerByName.getIt_manager_contact());
     }
 
     public JobDTO getJobById(String jobId) throws SQLException, ClassNotFoundException {
-        return jobDAO.getJobById(jobId);
+        Job jobEntity = jobDAO.getJobById(jobId);
+        return new JobDTO(
+                jobEntity.getId(),
+                jobEntity.getType(),
+                jobEntity.getCusId(),
+                jobEntity.getDudeDate(),
+                jobEntity.getTableCount(),
+                jobEntity.getVehicleId(),
+                jobEntity.getStartDate(),
+                jobEntity.getEndDate(),
+                jobEntity.getLocation(),
+                jobEntity.getJobStatus(),
+                jobEntity.getPowerPoint(),
+                jobEntity.getDataPoint(),
+                jobEntity.getCameraPoint(),
+                jobEntity.getDoneBy());
     }
 }

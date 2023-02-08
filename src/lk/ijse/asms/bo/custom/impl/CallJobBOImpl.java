@@ -8,6 +8,9 @@ import lk.ijse.asms.db.DBConnection;
 import lk.ijse.asms.dto.CustomDTO;
 import lk.ijse.asms.dto.EmpTeamDTO;
 import lk.ijse.asms.dto.JobDTO;
+import lk.ijse.asms.entity.EmpTeam;
+import lk.ijse.asms.entity.Job;
+import lk.ijse.asms.entity.Team;
 import lk.ijse.asms.view.tm.TeamTM;
 
 import java.sql.Connection;
@@ -26,16 +29,16 @@ public class CallJobBOImpl implements CallJobBO {
         Connection connection = DBConnection.getInstance().getConnection();
         connection.setAutoCommit(false);
         boolean allAdd;
-            boolean isCallJobSave = jobDAO.callJob(jobDTO);
+            boolean isCallJobSave = jobDAO.callJob(new Job(jobDTO.getId(),jobDTO.getVehicleId(),jobDTO.getStartDate(),jobDTO.getJobStatus(),jobDTO.getDoneBy()));
             if(isCallJobSave){
                 allAdd=true;
                 connection.commit();
                 String teamId = teamDAO.getNextTeamId();
-                boolean isTeamSave = teamDAO.saveTeam(teamId, jobDTO.getId());
+                boolean isTeamSave = teamDAO.saveTeam(new Team(teamId, jobDTO.getId()));
                 if(isTeamSave){
                     connection.commit();
                     for(TeamTM teamTM:list){
-                        boolean isEmpTeamSave = empTeamDAO.saveEmpTeam(new EmpTeamDTO(teamId, teamTM.getId()));
+                        boolean isEmpTeamSave = empTeamDAO.saveEmpTeam(new EmpTeam(teamId, teamTM.getId()));
                         if(isEmpTeamSave){
                             allAdd=true;
                             connection.commit();

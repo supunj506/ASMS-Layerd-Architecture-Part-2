@@ -4,6 +4,8 @@ import lk.ijse.asms.dao.util.PaymentPlaneType;
 import lk.ijse.asms.dao.SQLUtil;
 import lk.ijse.asms.dao.custom.PaymentPlaneDAO;
 import lk.ijse.asms.dto.PaymentPlaneDTO;
+import lk.ijse.asms.entity.PaymentPlane;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,18 +14,18 @@ import java.util.ArrayList;
 public class PaymentPlaneDAOImpl implements PaymentPlaneDAO {
 
     @Override
-    public boolean updatePPPlane(PaymentPlaneDTO paymentPlaneDTO) throws SQLException, ClassNotFoundException {
+    public boolean updatePPPlane(PaymentPlane paymentPlane) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("Update pp_plane set description=?,unite_price=? where name=?",
-                paymentPlaneDTO.getDescription(),
-                paymentPlaneDTO.getUnitPrice(),
-                paymentPlaneDTO.getName());
+                paymentPlane.getDescription(),
+                paymentPlane.getUnitPrice(),
+                paymentPlane.getName());
     }
     @Override
-    public ArrayList<PaymentPlaneDTO> getAllPoint() throws SQLException, ClassNotFoundException {
+    public ArrayList<PaymentPlane> getAllPoint() throws SQLException, ClassNotFoundException {
         ResultSet rst= SQLUtil.execute("select * from pp_plane");
-        ArrayList<PaymentPlaneDTO> plane=new ArrayList<>();
+        ArrayList<PaymentPlane> plane=new ArrayList<>();
         while (rst.next()){
-            plane.add(new PaymentPlaneDTO(
+            plane.add(new PaymentPlane(
                     rst.getString(1),
                     rst.getString(2),
                     rst.getString(3),
@@ -32,7 +34,7 @@ public class PaymentPlaneDAOImpl implements PaymentPlaneDAO {
         return plane;
     }
     @Override
-    public PaymentPlaneDTO getPointDetails(PaymentPlaneType type) throws SQLException, ClassNotFoundException {
+    public PaymentPlane getPointDetails(PaymentPlaneType type) throws SQLException, ClassNotFoundException {
         ResultSet rst=null;
 
         switch (type){
@@ -47,7 +49,7 @@ public class PaymentPlaneDAOImpl implements PaymentPlaneDAO {
                 break;
         }
         if(rst.next()){
-            return new PaymentPlaneDTO(
+            return new PaymentPlane(
                     rst.getString(1),
                     rst.getString(2),
                     rst.getString(3),

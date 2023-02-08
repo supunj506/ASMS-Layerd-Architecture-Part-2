@@ -19,6 +19,9 @@ import lk.ijse.asms.dto.CustomDTO;
 import lk.ijse.asms.dto.JobDTO;
 import lk.ijse.asms.dto.PaymentPlaneDTO;
 import lk.ijse.asms.dto.SubPaymentDTO;
+import lk.ijse.asms.entity.Job;
+import lk.ijse.asms.entity.PaymentPlane;
+import lk.ijse.asms.entity.SubPayment;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -38,13 +41,13 @@ public class FinishJobBOImpl implements FinishJobBO {
         Connection connection = DBConnection.getInstance().getConnection();
         boolean finishJob=false;
 
-        PaymentPlaneDTO power = paymentPlaneDAO.getPointDetails(PaymentPlaneType.POWER);
-        PaymentPlaneDTO data = paymentPlaneDAO.getPointDetails(PaymentPlaneType.DATA);
-        PaymentPlaneDTO camera = paymentPlaneDAO.getPointDetails(PaymentPlaneType.CAMERA);
+        PaymentPlane power = paymentPlaneDAO.getPointDetails(PaymentPlaneType.POWER);
+        PaymentPlane data = paymentPlaneDAO.getPointDetails(PaymentPlaneType.DATA);
+        PaymentPlane camera = paymentPlaneDAO.getPointDetails(PaymentPlaneType.CAMERA);
 
         double total = subPaymentDTO.getPower_point() * power.getUnitPrice() + subPaymentDTO.getData_point()* data.getUnitPrice() + subPaymentDTO.getCamera_point()* camera.getUnitPrice();
 
-        JobDTO jobDTO =new JobDTO(
+        Job jobEntity =new Job(
                 jobId,
                 LocalDate.now(),
                 "DONE",
@@ -54,15 +57,15 @@ public class FinishJobBOImpl implements FinishJobBO {
         );
 
         connection.setAutoCommit(false);
-        boolean isFinishJob = jobDAO.finishJob(jobDTO);
+        boolean isFinishJob = jobDAO.finishJob(jobEntity);
         if(isFinishJob){
             finishJob=true;
             connection.commit();
-            JobDTO jobDTO1 = jobDAO.getJobById(jobId);
-                if (jobDTO1.getDoneBy().equals("SUB CONTRACT")) {
+            Job jobEntity1 = jobDAO.getJobById(jobId);
+                if (jobEntity1.getDoneBy().equals("SUB CONTRACT")) {
                     String payId = paymentDAO.getNextId();
                     CustomDTO customDTO = queryDAO.getDetailForSubcPayment(jobId);
-                    SubPaymentDTO subPaymentDTO1 = new SubPaymentDTO(
+                    SubPayment subPaymentEntity1 = new SubPayment(
                             payId,
                             customDTO.getEmployeeId(),
                             jobId,
@@ -72,7 +75,7 @@ public class FinishJobBOImpl implements FinishJobBO {
                             total,
                             "REMINNING"
                     );
-                    boolean isSaveSubPayment = paymentDAO.saveSubCPayment(subPaymentDTO1);
+                    boolean isSaveSubPayment = paymentDAO.saveSubCPayment(subPaymentEntity1);
                     if (isSaveSubPayment) {
                         connection.commit();
                     } else {

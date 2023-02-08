@@ -3,7 +3,6 @@ package lk.ijse.asms.bo.custom.impl;
 import lk.ijse.asms.bo.custom.CustomerBO;
 import lk.ijse.asms.dao.DAOFactory;
 import lk.ijse.asms.dao.custom.CustomerDAO;
-import lk.ijse.asms.dao.custom.impl.CustomerDAOImpl;
 import lk.ijse.asms.dto.CustomerDTO;
 import lk.ijse.asms.entity.Customer;
 
@@ -32,8 +31,8 @@ public class CustomerBOImpl implements CustomerBO {
                         customer.getAddress(),
                         customer.getEmail(),
                         customer.getContact(),
-                        customer.getItManagerName(),
-                        customer.getItManagerContact()));
+                        customer.getIt_manager_name(),
+                        customer.getIt_manager_contact()));
             }
         }
         return allCustomerDTO;
@@ -51,8 +50,8 @@ public class CustomerBOImpl implements CustomerBO {
                 customerById.getAddress(),
                 customerById.getEmail(),
                 customerById.getContact(),
-                customerById.getItManagerName(),
-                customerById.getItManagerContact());
+                customerById.getIt_manager_name(),
+                customerById.getIt_manager_contact());
     }
 
     private Customer convertObjectType(CustomerDTO customerDTO){

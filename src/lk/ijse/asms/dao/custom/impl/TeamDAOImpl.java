@@ -2,14 +2,15 @@ package lk.ijse.asms.dao.custom.impl;
 
 import lk.ijse.asms.dao.SQLUtil;
 import lk.ijse.asms.dao.custom.TeamDAO;
+import lk.ijse.asms.entity.Team;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class TeamDAOImpl implements TeamDAO {
     @Override
-    public boolean saveTeam(String id,String jobId) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("Insert into team values (?,?)",id,jobId);
+    public boolean saveTeam(Team teamEntity) throws SQLException, ClassNotFoundException {
+        return SQLUtil.execute("Insert into team values (?,?)",teamEntity.getId(),teamEntity.getJobId());
     }
     @Override
     public String getNextTeamId() throws SQLException, ClassNotFoundException {

@@ -3,6 +3,7 @@ package lk.ijse.asms.dao.custom.impl;
 import lk.ijse.asms.dao.SQLUtil;
 import lk.ijse.asms.dao.custom.JobDAO;
 import lk.ijse.asms.dto.JobDTO;
+import lk.ijse.asms.entity.Job;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,40 +27,40 @@ public class JobDAOImpl implements JobDAO {
         return "J01";
     }
     @Override
-    public boolean addJob(JobDTO jobDTO) throws SQLException, ClassNotFoundException {
+    public boolean addJob(Job job) throws SQLException, ClassNotFoundException {
         return  SQLUtil.execute("INSERT INTO job(id,type,cus_id,dude_date,table_count,location,job_status) VALUES (?,?,?,?,?,?,?)",
-                jobDTO.getId(),
-                jobDTO.getType(),
-                jobDTO.getCusId(),
-                jobDTO.getDudeDate(),
-                jobDTO.getTableCount(),
-                jobDTO.getLocation(),
-                jobDTO.getJobStatus());
+                job.getId(),
+                job.getType(),
+                job.getCusId(),
+                job.getDudeDate(),
+                job.getTableCount(),
+                job.getLocation(),
+                job.getJobStatus());
     }
     @Override
-    public boolean callJob(JobDTO jobDTO) throws SQLException, ClassNotFoundException {
+    public boolean callJob(Job job) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("UPDATE job SET vehicle_id=?,start_date=?,job_status=?,done_by=? WHERE id=?",
-                jobDTO.getVehicleId(),
-                jobDTO.getStartDate(),
-                jobDTO.getJobStatus(),
-                jobDTO.getDoneBy(),
-                jobDTO.getId());
+                job.getVehicleId(),
+                job.getStartDate(),
+                job.getJobStatus(),
+                job.getDoneBy(),
+                job.getId());
     }
     @Override
-    public boolean finishJob(JobDTO jobDTO) throws SQLException, ClassNotFoundException {
+    public boolean finishJob(Job job) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("UPDATE job SET end_date=?,job_status=?,power_pint=?,data_point=?,camera_point=? WHERE id=?",
-                jobDTO.getEndDate(),
-                jobDTO.getJobStatus(),
-                jobDTO.getPowerPoint(),
-                jobDTO.getDataPoint(),
-                jobDTO.getCameraPoint(),
-                jobDTO.getId());
+                job.getEndDate(),
+                job.getJobStatus(),
+                job.getPowerPoint(),
+                job.getDataPoint(),
+                job.getCameraPoint(),
+                job.getId());
     }
     @Override
-    public JobDTO getJobById(String id) throws SQLException, ClassNotFoundException{
+    public Job getJobById(String id) throws SQLException, ClassNotFoundException{
         ResultSet rst=SQLUtil.execute("select * from job where id=?",id);
         if(rst.next()){
-            return new JobDTO(
+            return new Job(
                     rst.getString(1),
                     rst.getString(2),
                     rst.getString(3),

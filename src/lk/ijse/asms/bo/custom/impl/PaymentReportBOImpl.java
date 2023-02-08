@@ -9,6 +9,9 @@ import lk.ijse.asms.dao.custom.impl.*;
 import lk.ijse.asms.dao.util.PaymentPlaneType;
 import lk.ijse.asms.dto.*;
 import lk.ijse.asms.entity.Employee;
+import lk.ijse.asms.entity.Job;
+import lk.ijse.asms.entity.PaymentPlane;
+import lk.ijse.asms.entity.SubPayment;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -47,14 +50,41 @@ public class PaymentReportBOImpl implements PaymentReportBO {
     }
 
     public JobDTO getJobById(String jobId) throws SQLException, ClassNotFoundException {
-        return jobDAO.getJobById(jobId);
+        Job jobEntity = jobDAO.getJobById(jobId);
+        return new JobDTO(
+                jobEntity.getId(),
+                jobEntity.getType(),
+                jobEntity.getCusId(),
+                jobEntity.getDudeDate(),
+                jobEntity.getTableCount(),
+                jobEntity.getVehicleId(),
+                jobEntity.getStartDate(),
+                jobEntity.getEndDate(),
+                jobEntity.getLocation(),
+                jobEntity.getJobStatus(),
+                jobEntity.getPowerPoint(),
+                jobEntity.getDataPoint(),
+                jobEntity.getCameraPoint(),
+                jobEntity.getDoneBy());
+
     }
 
     public SubPaymentDTO getSubPaymentById(String subPayId) throws SQLException, ClassNotFoundException {
-        return paymentDAO.getSubPaymentById(subPayId);
+        SubPayment subPaymentById = paymentDAO.getSubPaymentById(subPayId);
+        return new SubPaymentDTO(
+                subPaymentById.getId(),
+                subPaymentById.getEmp_id(),
+                subPaymentById.getJob_id(),
+                subPaymentById.getData_point(),
+                subPaymentById.getPower_point(),
+                subPaymentById.getCamera_point(),
+                subPaymentById.getTotal_amount(),
+                subPaymentById.getPay_date(),
+                subPaymentById.getPay_status());
     }
 
     public PaymentPlaneDTO getPointDetails(PaymentPlaneType type) throws SQLException, ClassNotFoundException {
-        return paymentPlaneDAO.getPointDetails(type);
+        PaymentPlane pointDetails = paymentPlaneDAO.getPointDetails(type);
+        return new PaymentPlaneDTO(pointDetails.getId(),pointDetails.getName(),pointDetails.getDescription(),pointDetails.getUnitPrice());
     }
 }

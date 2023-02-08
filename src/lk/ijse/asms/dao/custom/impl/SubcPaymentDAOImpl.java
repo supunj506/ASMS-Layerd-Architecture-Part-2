@@ -2,22 +2,24 @@ package lk.ijse.asms.dao.custom.impl;
 import lk.ijse.asms.dao.custom.SubcPaymentDAO;
 import lk.ijse.asms.dto.SubPaymentDTO;
 import lk.ijse.asms.dao.SQLUtil;
+import lk.ijse.asms.entity.SubPayment;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class SubcPaymentDAOImpl implements SubcPaymentDAO {
     @Override
-    public boolean saveSubCPayment(SubPaymentDTO subPaymentDTO) throws SQLException, ClassNotFoundException {
+    public boolean saveSubCPayment(SubPayment subPaymentEntity) throws SQLException, ClassNotFoundException {
        return SQLUtil.execute("insert into subc_payment (id,emp_id,job_id,data_point,power_point,camera_point,total_amount,pay_status) values (?,?,?,?,?,?,?,?)",
-                subPaymentDTO.getId(),
-                subPaymentDTO.getEmp_id(),
-                subPaymentDTO.getJob_id(),
-                subPaymentDTO.getData_point(),
-                subPaymentDTO.getPower_point(),
-                subPaymentDTO.getCamera_point(),
-                subPaymentDTO.getTotal_amount(),
-                subPaymentDTO.getPay_status());
+               subPaymentEntity.getId(),
+               subPaymentEntity.getEmp_id(),
+               subPaymentEntity.getJob_id(),
+               subPaymentEntity.getData_point(),
+               subPaymentEntity.getPower_point(),
+               subPaymentEntity.getCamera_point(),
+               subPaymentEntity.getTotal_amount(),
+               subPaymentEntity.getPay_status());
 
     }
     @Override
@@ -38,10 +40,10 @@ public class SubcPaymentDAOImpl implements SubcPaymentDAO {
         }
 
     @Override
-    public SubPaymentDTO getSubPaymentById(String id) throws SQLException, ClassNotFoundException {
+    public SubPayment getSubPaymentById(String id) throws SQLException, ClassNotFoundException {
         ResultSet rst=SQLUtil.execute("select * from subc_payment where id=?",id);
         if(rst.next()){
-            return new SubPaymentDTO(
+            return new SubPayment(
                     rst.getString(1),
                     rst.getString(2),
                     rst.getString(3),
@@ -49,7 +51,8 @@ public class SubcPaymentDAOImpl implements SubcPaymentDAO {
                     rst.getInt(5),
                     rst.getInt(6),
                     rst.getDouble(7),
-                    rst.getString(8));
+                    LocalDate.parse(rst.getString(8)),
+                    rst.getString(9));
         }
         return null;
     }
